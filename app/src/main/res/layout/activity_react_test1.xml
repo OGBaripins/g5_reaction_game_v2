@@ -6,4 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ReactTest1Activity">
 
+    <ImageView
+        android:id="@+id/brPink"
+        android:layout_width="810dp"
+        android:layout_height="916dp"
+        android:layout_marginStart="-190dp"
+        android:layout_marginTop="-80dp"
+        android:contentDescription="@string/desc"
+        android:onClick="timerFunction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgpink" />
+
+    <ImageView
+        android:id="@+id/bgBlue"
+        android:layout_width="810dp"
+        android:layout_height="916dp"
+        android:layout_marginStart="-190dp"
+        android:layout_marginTop="-80dp"
+        android:contentDescription="@string/desc"
+        android:onClick="goToReact"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgblue" />
 </androidx.constraintlayout.widget.ConstraintLayout>
