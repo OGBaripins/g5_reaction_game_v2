@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">reaction-game</string>
     <string name="desc">img_temp</string>
+    <string name="ReactT1_desc">To start test, press the pink screen. When the screen turns blue, click as fast as possible.</string>
+    <string name="username">user</string>
+    <string name="password">12345678</string>
 </resources>

@@ -31,7 +31,6 @@ public class EntryActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, RegisterActivity.class);
         myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(myIntent);
-
     }
 
 }

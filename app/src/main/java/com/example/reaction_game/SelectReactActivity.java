@@ -20,7 +20,7 @@ public class SelectReactActivity extends AppCompatActivity {
     }
 
     public void goRTest1(View v){
-        Intent myIntent = new Intent(this, ReactTest1Activity.class);
+        Intent myIntent = new Intent(this, ReactTest1PreActivity.class);
         startActivity(myIntent);
     }
 }

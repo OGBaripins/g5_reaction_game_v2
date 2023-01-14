@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReactTest1Activity">
+    tools:context=".ReactTest1PreActivity">
 
     <ImageView
-        android:id="@+id/brPink"
+        android:id="@+id/bgPink"
         android:layout_width="810dp"
         android:layout_height="916dp"
         android:layout_marginStart="-190dp"
@@ -18,16 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bgpink" />
 
-    <ImageView
-        android:id="@+id/bgBlue"
-        android:layout_width="810dp"
-        android:layout_height="916dp"
-        android:layout_marginStart="-190dp"
-        android:layout_marginTop="-80dp"
-        android:contentDescription="@string/desc"
-        android:onClick="goToReact"
-        android:visibility="invisible"
+    <TextView
+        android:id="@+id/reactDesc"
+        android:layout_width="193dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="268dp"
+        android:text="@string/ReactT1_desc"
+        android:textColor="#212121"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bgblue" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

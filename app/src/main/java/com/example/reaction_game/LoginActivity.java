@@ -21,40 +21,23 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         username = findViewById(R.id.login_username_field);
         password = findViewById(R.id.login_password_field);
-        login_btn = findViewById(R.id.login_submit_button);
+    }
 
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(LoginActivity.this,"Click worked i guess", Toast.LENGTH_LONG).show();
-                username_str = username.getText().toString();
-                password_str = password.getText().toString();
-
-                if(sp.getString("username",null).equals(username_str)){
-
-                    if(sp.getString("password",null).equals(password_str)){
-                        Toast.makeText(LoginActivity.this,"Login Successfully", Toast.LENGTH_LONG).show();
-
-                        Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
-                        myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(myIntent);
-                    }else{
-                        Toast.makeText(LoginActivity.this,"Incorrect Credentials2", Toast.LENGTH_LONG).show();
-                    }
-
-                }else{
-                    Toast.makeText(LoginActivity.this,"Incorrect Credentials", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+    public void checkLogin(View v){
+        //if(sp.getString("username",null).equals(username.getText().toString())){
+        //if(sp.getString("password",null).equals(password.getText().toString())){
+        if(getString(R.string.username).equals(username.getText().toString()) && getString(R.string.password).equals(password.getText().toString())){
+            Intent myIntent = new Intent(this, MainActivity.class);
+            startActivity(myIntent);
+        } else {
+            Toast.makeText(this,"Incorrect credentials", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void goToEntry(View v){
         Intent myIntent = new Intent(this, EntryActivity.class);
-        myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(myIntent);
     }
 }
