@@ -7,6 +7,14 @@
     tools:context=".EntryActivity">
 
     <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgbluepink" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="411dp"
         android:layout_height="293dp"
@@ -149,14 +157,13 @@
         android:id="@+id/login_back_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="goToEntry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/entry_login_btn"
-        app:layout_constraintVertical_bias="0.709"
         app:srcCompat="@drawable/back"
         tools:ignore="SpeakableTextPresentCheck" />
 

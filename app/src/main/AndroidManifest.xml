@@ -12,6 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reactiongame">
         <activity
+            android:name=".AccountActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SelectMemoryActivity"
             android:exported="false">
             <meta-data

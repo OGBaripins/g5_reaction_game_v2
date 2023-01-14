@@ -6,12 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class SelectMemoryActivity extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_memory);
+        setContentView(R.layout.activity_account);
     }
 
     public void goBack(View v){

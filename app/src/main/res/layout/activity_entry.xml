@@ -7,6 +7,14 @@
     tools:context=".EntryActivity">
 
     <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgbluepink" />
+
+    <ImageView
         android:id="@+id/imageLogo"
         android:layout_width="411dp"
         android:layout_height="293dp"

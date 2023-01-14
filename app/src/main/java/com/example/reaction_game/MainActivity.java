@@ -23,4 +23,14 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, SelectMemoryActivity.class);
         startActivity(myIntent);
     }
+
+    public void goToSettings(View v){
+        Intent myIntent = new Intent(this, SettingsActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void goToAccount(View v){
+        Intent myIntent = new Intent(this, AccountActivity.class);
+        startActivity(myIntent);
+    }
 }
