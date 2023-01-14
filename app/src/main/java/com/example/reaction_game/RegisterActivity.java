@@ -67,9 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(password_rep_str.equals(password_str)){
-                    editor.putString("password_rep", password_rep_str);
-                }else{
+                if(!password_rep_str.equals(password_str)){
                     Toast.makeText(RegisterActivity.this,"Password's have to match", Toast.LENGTH_LONG).show();
                     return;
                 }
