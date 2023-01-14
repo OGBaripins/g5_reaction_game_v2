@@ -20,12 +20,13 @@
 
     <TextView
         android:id="@+id/reactDesc"
-        android:layout_width="193dp"
-        android:layout_height="52dp"
+        android:layout_width="192dp"
+        android:layout_height="87dp"
         android:layout_marginStart="116dp"
         android:layout_marginTop="268dp"
+        android:background="#B4000000"
         android:text="@string/ReactT1_desc"
-        android:textColor="#212121"
+        android:textColor="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class ReactTest1Mid extends AppCompatActivity {
 
     public void goToResult(View v){
         resultTime = (System.currentTimeMillis() - startTime);
-        if (resultTime < resultBest || resultBest == 0){
+        if (resultTime < resultBest || resultBest == 0) {
             resultBest = resultTime;
         }
         results.add(resultTime);
