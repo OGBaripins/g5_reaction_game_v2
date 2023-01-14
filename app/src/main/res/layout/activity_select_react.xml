@@ -23,11 +23,12 @@
         android:layout_height="160dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="220dp"
+        android:contentDescription="@string/desc"
         android:onClick="goRTest1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/buttonreactt1"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -35,9 +36,10 @@
         android:layout_height="160dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
+        android:contentDescription="@string/desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView16"
-        app:srcCompat="@drawable/buttonreactt1" />
+        app:srcCompat="@drawable/buttonttemp" />
 
     <ImageView
         android:id="@+id/imageView18"
@@ -45,9 +47,10 @@
         android:layout_height="160dp"
         android:layout_marginTop="220dp"
         android:layout_marginEnd="40dp"
+        android:contentDescription="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/buttonreactt1" />
+        app:srcCompat="@drawable/buttonreactt2" />
 
     <ImageView
         android:id="@+id/imageView20"
@@ -55,9 +58,10 @@
         android:layout_height="160dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
+        android:contentDescription="@string/desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView18"
-        app:srcCompat="@drawable/buttonreactt1" />
+        app:srcCompat="@drawable/buttonttemp" />
 
     <ImageView
         android:id="@+id/login_back_btn3"
@@ -66,6 +70,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
+        android:contentDescription="@string/desc"
         android:focusable="true"
         android:onClick="goBack"
         app:layout_constraintBottom_toBottomOf="parent"

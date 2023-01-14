@@ -21,6 +21,7 @@
         android:id="@+id/imageView"
         android:layout_width="411dp"
         android:layout_height="293dp"
+        android:contentDescription="@string/desc"
         android:src="@mipmap/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +62,9 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
+        app:layout_constraintVertical_bias="0.681"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/login_password_field"
@@ -82,7 +85,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_username_field"
         app:layout_constraintVertical_bias="0.019"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView3"
@@ -95,7 +99,8 @@
         app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView4"
@@ -108,7 +113,8 @@
         app:layout_constraintHorizontal_bias="0.293"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_username_field"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/facebook_icon"
@@ -116,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:clickable="true"
+        android:contentDescription="@string/desc"
         android:focusable="true"
         android:minWidth="48dp"
         android:minHeight="48dp"
@@ -126,7 +133,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="1.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <ImageView
         android:id="@+id/google_icon"
@@ -135,6 +142,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
+        android:contentDescription="@string/desc"
         android:focusable="true"
         android:src="@drawable/google"
         app:layout_constraintBottom_toTopOf="@+id/login_submit_button"
@@ -154,7 +162,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/login_back_btn"
@@ -163,6 +172,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
+        android:contentDescription="@string/desc"
         android:focusable="true"
         android:onClick="goToEntry"
         app:layout_constraintBottom_toBottomOf="parent"

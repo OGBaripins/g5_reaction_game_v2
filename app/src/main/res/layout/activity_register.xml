@@ -24,18 +24,20 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
+        android:contentDescription="@string/desc"
         android:focusable="true"
         android:onClick="goToEntry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/back"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="314dp"
         android:layout_height="247dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/desc"
         android:src="@mipmap/ic_launcher_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +64,9 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintVertical_bias="0.342"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView3"
@@ -75,7 +79,8 @@
         app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.996" />
+        app:layout_constraintVertical_bias="0.996"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView4"
@@ -87,7 +92,8 @@
         app:layout_constraintHorizontal_bias="0.296"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997" />
+        app:layout_constraintVertical_bias="0.997"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -99,13 +105,15 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintVertical_bias="0.772"
+        tools:ignore="TextContrastCheck" />
 
     <ImageView
         android:id="@+id/facebook_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/desc"
         android:src="@drawable/facebook_icon"
         app:layout_constraintBottom_toTopOf="@+id/login_submit_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +141,9 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.709" />
+        app:layout_constraintVertical_bias="0.709"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/register_password_field"
@@ -143,7 +153,7 @@
         android:drawableStart="@drawable/ic_baseline_lock_24"
         android:drawablePadding="12dp"
         android:ems="10"
-        android:hint=""
+        android:hint="."
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:paddingStart="12dp"
@@ -153,7 +163,10 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578" />
+        app:layout_constraintVertical_bias="0.578"
+        tools:hint=" "
+        tools:ignore="SpeakableTextPresentCheck"
+        android:autofillHints="" />
 
     <ImageView
         android:id="@+id/google_icon"
@@ -161,6 +174,7 @@
         android:layout_height="24dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/desc"
         android:src="@drawable/google"
         app:layout_constraintBottom_toTopOf="@+id/login_submit_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -199,7 +213,9 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.459" />
+        app:layout_constraintVertical_bias="0.459"
+        tools:ignore="TextContrastCheck"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView5"
@@ -212,7 +228,8 @@
         app:layout_constraintHorizontal_bias="0.353"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997" />
+        app:layout_constraintVertical_bias="0.997"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textView2"
@@ -226,6 +243,7 @@
         app:layout_constraintHorizontal_bias="0.27"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.995" />
+        app:layout_constraintVertical_bias="0.995"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
