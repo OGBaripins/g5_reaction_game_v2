@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:src="@drawable/facebook_icon"
-        app:layout_constraintBottom_toTopOf="@+id/entry_login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/login_submit_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.439"
         app:layout_constraintStart_toStartOf="parent"
@@ -162,7 +162,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/google"
-        app:layout_constraintBottom_toTopOf="@+id/entry_login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/login_submit_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintStart_toEndOf="@+id/facebook_icon"
@@ -170,7 +170,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/entry_login_btn"
+        android:id="@+id/login_submit_button"
         android:layout_width="297dp"
         android:layout_height="60dp"
         android:text="REGISTER"
