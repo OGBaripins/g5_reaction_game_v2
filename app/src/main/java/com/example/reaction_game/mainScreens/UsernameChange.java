@@ -3,9 +3,14 @@ package com.example.reaction_game.mainScreens;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.reaction_game.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,6 +19,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class UsernameChange extends AppCompatActivity {
 
     BottomNavigationView nav;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +63,20 @@ public class UsernameChange extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    public void changeUsername(){
-        // yes
+    public void changeUsername(View view){
+
+        sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        String cur_username = sp.getString("username", null);
+        EditText username_str = findViewById(R.id.new_username_field);
+
+        if(cur_username != null && !cur_username.equals(username_str.getText().toString())){
+            editor.putString("username", username_str.getText().toString());
+            editor.commit();
+            goToSettings();
+        }else{
+            Toast.makeText(UsernameChange.this, "Cant changed username to the same one.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

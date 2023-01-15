@@ -1,9 +1,13 @@
 package com.example.reaction_game.mainScreens;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +18,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +27,18 @@ public class MainActivity extends AppCompatActivity {
 
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.home);
+        sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.account:
-                        goToAccount();
+                        if(sp.getBoolean("isLoggedIn", false)){
+                            goToAccount();
+                        }else{
+                            Toast.makeText(MainActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
+                        }
                         break;
                     case R.id.settings:
                         goToSettings();

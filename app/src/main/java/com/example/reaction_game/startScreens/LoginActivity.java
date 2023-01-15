@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText username, password;
     SharedPreferences sp;
 
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +27,18 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.login_password_field);
 
         sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        editor.putBoolean("isLoggedIn", false);
+        editor.commit();
     }
 
     public void checkLogin(View v){
+        SharedPreferences.Editor editor = sp.edit();
+
         if(sp.getString("username",null).equals(username.getText().toString()) && sp.getString("password",null).equals(password.getText().toString())){
+            editor.putBoolean("isLoggedIn",true);
+            editor.commit();
             Intent myIntent = new Intent(this, MainActivity.class);
             startActivity(myIntent);
         } else {

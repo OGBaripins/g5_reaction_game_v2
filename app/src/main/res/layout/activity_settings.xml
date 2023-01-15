@@ -77,7 +77,7 @@
         android:layout_width="344dp"
         android:layout_height="79dp"
         android:backgroundTint="@color/button_grey"
-        android:onClick="gotoEntry"
+        android:onClick="gotoEntryOnClick"
         android:text="LOGOUT"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

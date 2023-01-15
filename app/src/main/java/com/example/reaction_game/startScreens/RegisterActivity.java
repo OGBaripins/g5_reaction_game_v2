@@ -25,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText email, username, password, password_rep;
     Button register_btn;
     SharedPreferences sp;
+
     String email_str, username_str, password_str, password_rep_str;
 
     @Override
@@ -32,12 +33,15 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
         email = findViewById(R.id.register_email_field); username = findViewById(R.id.register_username_field);
         password = findViewById(R.id.register_password_field); password_rep = findViewById(R.id.register_password_field2);
         register_btn = findViewById(R.id.button_login_submit);
 
         sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("isLoggedIn", false);
+        editor.commit();
         register_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,8 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
                 username_str = username.getText().toString();
                 password_str = password.getText().toString();
                 password_rep_str = password_rep.getText().toString();
-
-                SharedPreferences.Editor editor = sp.edit();
 
                 if(validateEmail(email_str)){
                     editor.putString("email", email_str);
