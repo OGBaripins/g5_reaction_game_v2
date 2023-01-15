@@ -7,7 +7,7 @@
     tools:context=".mainScreens.SelectMemoryActivity">
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/bgMemory"
         android:layout_width="700dp"
         android:layout_height="1200dp"
         android:layout_marginStart="-120dp"
@@ -18,7 +18,63 @@
         app:srcCompat="@drawable/bgblackwhite" />
 
     <ImageView
-        android:id="@+id/login_back_btn2"
+        android:id="@+id/logoMemory"
+        android:layout_width="412dp"
+        android:layout_height="219dp"
+        android:contentDescription="@string/desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/imgmemory" />
+
+    <ImageView
+        android:id="@+id/memoryT1"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="220dp"
+        android:contentDescription="@string/desc"
+        android:onClick="goMTest1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/buttonmemoryt1"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ImageView
+        android:id="@+id/memoryT3"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoryT1"
+        app:srcCompat="@drawable/buttonttemp" />
+
+    <ImageView
+        android:id="@+id/memoryT2"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="40dp"
+        android:contentDescription="@string/desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/buttonmemoryt2" />
+
+    <ImageView
+        android:id="@+id/memoryT4"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
+        android:contentDescription="@string/desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memoryT2"
+        app:srcCompat="@drawable/buttonttemp"
+        tools:ignore="ImageContrastCheck" />
+
+    <ImageView
+        android:id="@+id/button_back_memory"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="8dp"
@@ -31,58 +87,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/buttonbackblack"
         tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="220dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/buttonmemoryt1" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
-        app:srcCompat="@drawable/buttonttemp" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="40dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/buttonmemoryt2" />
-
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="40dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        app:srcCompat="@drawable/buttonttemp"
-        tools:ignore="ImageContrastCheck" />
-
-    <ImageView
-        android:id="@+id/imageView21"
-        android:layout_width="412dp"
-        android:layout_height="219dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imgmemory" />
 </androidx.constraintlayout.widget.ConstraintLayout>

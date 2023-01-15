@@ -20,11 +20,11 @@ public class ReactScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_score);
-        TextView resNow = findViewById(R.id.resultNow);
+        TextView resNow = findViewById(R.id.textResultNow);
         resNow.setText(df.format(ReactTest1Mid.resultTime / 1000) + " sec");
-        TextView resBest = findViewById(R.id.resultBest);
+        TextView resBest = findViewById(R.id.textResultBest);
         resBest.setText(df.format(ReactTest1Mid.resultBest / 1000) + " sec");
-        TextView resAVG = findViewById(R.id.resultAVG);
+        TextView resAVG = findViewById(R.id.textResultAVG);
         resAVG.setText(df.format(ReactTest1Mid.resultAVG / 1000) + " sec");
     }
 

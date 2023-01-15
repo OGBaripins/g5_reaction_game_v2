@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         email = findViewById(R.id.register_email_field); username = findViewById(R.id.register_username_field);
         password = findViewById(R.id.register_password_field); password_rep = findViewById(R.id.register_password_field2);
-        register_btn = findViewById(R.id.login_submit_button);
+        register_btn = findViewById(R.id.button_login_submit);
 
         sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 

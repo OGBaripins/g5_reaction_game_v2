@@ -7,7 +7,7 @@
     tools:context=".mainScreens.SelectReactActivity">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/bgReaction"
         android:layout_width="700dp"
         android:layout_height="1200dp"
         android:layout_marginStart="-120dp"
@@ -18,7 +18,16 @@
         app:srcCompat="@drawable/bgblackwhite" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/logoReaction"
+        android:layout_width="412dp"
+        android:layout_height="219dp"
+        android:contentDescription="@string/desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/imgreaction" />
+
+    <ImageView
+        android:id="@+id/reactionT1"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginStart="40dp"
@@ -31,18 +40,18 @@
         tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/reactionT3"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="24dp"
         android:contentDescription="@string/desc"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView16"
+        app:layout_constraintTop_toBottomOf="@+id/reactionT1"
         app:srcCompat="@drawable/buttonttemp" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/reactionT2"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="220dp"
@@ -53,18 +62,18 @@
         app:srcCompat="@drawable/buttonreactt2" />
 
     <ImageView
-        android:id="@+id/imageView20"
+        android:id="@+id/reactionT4"
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="40dp"
         android:contentDescription="@string/desc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/reactionT2"
         app:srcCompat="@drawable/buttonttemp" />
 
     <ImageView
-        android:id="@+id/login_back_btn3"
+        android:id="@+id/button_back_reaction"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="8dp"
@@ -78,12 +87,4 @@
         app:srcCompat="@drawable/buttonbackblack"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="412dp"
-        android:layout_height="219dp"
-        android:contentDescription="@string/desc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imgreaction" />
 </androidx.constraintlayout.widget.ConstraintLayout>

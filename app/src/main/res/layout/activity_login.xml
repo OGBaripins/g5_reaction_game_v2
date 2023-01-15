@@ -7,7 +7,7 @@
     tools:context=".startScreens.EntryActivity">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/bgLogin"
         android:layout_width="700dp"
         android:layout_height="1200dp"
         android:layout_marginStart="-120dp"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/bgbluepink" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoReactLogin"
         android:layout_width="411dp"
         android:layout_height="293dp"
         android:contentDescription="@string/desc"
@@ -30,66 +30,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/login_submit_button"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="88dp"
-        android:onClick="checkLogin"
-        android:text="LOGIN"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/login_username_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/ic_baseline_people_24"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="user_name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681"
-        tools:ignore="TextContrastCheck"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/login_password_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_username_field"
-        app:layout_constraintVertical_bias="0.019"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:autofillHints="" />
-
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
@@ -103,7 +45,7 @@
         tools:ignore="TextContrastCheck" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -114,6 +56,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_username_field"
         app:layout_constraintVertical_bias="1.0"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/textEnterWith"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="192dp"
+        android:text="LOGIN WITH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <ImageView
@@ -127,11 +81,11 @@
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:src="@drawable/facebook_icon"
-        app:layout_constraintBottom_toTopOf="@+id/login_submit_button"
+        app:layout_constraintBottom_toTopOf="@+id/button_login_submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textEnterWith"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
@@ -145,28 +99,60 @@
         android:contentDescription="@string/desc"
         android:focusable="true"
         android:src="@drawable/google"
-        app:layout_constraintBottom_toTopOf="@+id/login_submit_button"
+        app:layout_constraintBottom_toTopOf="@+id/button_login_submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toEndOf="@+id/facebook_icon"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textEnterWith"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/textView"
+    <EditText
+        android:id="@+id/login_username_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="192dp"
-        android:text="LOGIN WITH"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:autofillHints=""
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_people_24"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="user_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/textEnterWith"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.681"
         tools:ignore="TextContrastCheck" />
 
+    <EditText
+        android:id="@+id/login_password_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:autofillHints=""
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/textEnterWith"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_username_field"
+        app:layout_constraintVertical_bias="0.019"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <ImageView
-        android:id="@+id/login_back_btn"
+        android:id="@+id/button_back_login"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="8dp"
@@ -179,5 +165,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/back"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/button_login_submit"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="88dp"
+        android:onClick="checkLogin"
+        android:text="LOGIN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEnterWith"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

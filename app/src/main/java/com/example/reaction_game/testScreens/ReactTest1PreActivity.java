@@ -21,7 +21,7 @@ public class ReactTest1PreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_test1_pre);
-        description = (TextView) findViewById(R.id.reactDesc);
+        description = (TextView) findViewById(R.id.textRT1Description);
     }
 
     @SuppressLint("WrongConstant")
