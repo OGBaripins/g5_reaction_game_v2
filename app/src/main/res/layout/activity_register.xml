@@ -68,8 +68,37 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772"
+        app:layout_constraintVertical_bias="0.761"
         tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/google_icon"
+        android:layout_width="25dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/desc"
+        android:src="@drawable/google"
+        app:layout_constraintBottom_toTopOf="@+id/button_login_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toEndOf="@+id/facebook_icon"
+        app:layout_constraintTop_toBottomOf="@+id/textEnterWith"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/facebook_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/desc"
+        android:src="@drawable/facebook_icon"
+        app:layout_constraintBottom_toTopOf="@+id/button_login_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEnterWith"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textRepeatPassword"
@@ -99,35 +128,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.995"
         tools:ignore="TextContrastCheck" />
-
-    <ImageView
-        android:id="@+id/facebook_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/facebook_icon"
-        app:layout_constraintBottom_toTopOf="@+id/button_login_submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.439"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEnterWith"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/google_icon"
-        android:layout_width="25dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/google"
-        app:layout_constraintBottom_toTopOf="@+id/button_login_submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
-        app:layout_constraintStart_toEndOf="@+id/facebook_icon"
-        app:layout_constraintTop_toBottomOf="@+id/textEnterWith"
-        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/register_email_field"
@@ -236,8 +236,10 @@
 
     <Button
         android:id="@+id/button_login_submit"
-        android:layout_width="297dp"
-        android:layout_height="60dp"
+        android:layout_width="344dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/button_grey"
+        android:textColor="@color/white"
         android:text="REGISTER"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

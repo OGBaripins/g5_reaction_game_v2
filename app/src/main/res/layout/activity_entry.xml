@@ -31,37 +31,47 @@
 
     <Button
         android:id="@+id/button_register_entry"
-        android:layout_width="342dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="136dp"
+        android:layout_width="344dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/button_grey"
+        android:textColor="@color/white"
         android:onClick="goToRegister"
         android:text="REGISTER"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.789" />
 
     <Button
         android:id="@+id/button_login_submit"
         android:layout_width="344dp"
-        android:layout_height="69dp"
-        android:layout_marginBottom="208dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/button_grey"
         android:onClick="goToLogin"
         android:text="LOGIN"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.668" />
 
     <Button
         android:id="@+id/button_later_entry"
-        android:layout_width="345dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="344dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/button_grey"
         android:onClick="goToMainMenu"
         android:text="LATER"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.91" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

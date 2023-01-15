@@ -42,4 +42,49 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/imgsettings" />
 
+    <Button
+        android:id="@+id/settings_reset_score"
+        android:layout_width="344dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/button_grey"
+        android:onClick="goToRegister"
+        android:text="RESET SCORE"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.728" />
+
+    <Button
+        android:id="@+id/settings_change_username"
+        android:layout_width="344dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/button_grey"
+        android:onClick="gotoUsernameChange"
+        android:text="CHANGE USERNAME"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607" />
+
+    <Button
+        android:id="@+id/settings_logout"
+        android:layout_width="344dp"
+        android:layout_height="79dp"
+        android:backgroundTint="@color/button_grey"
+        android:onClick="gotoEntry"
+        android:text="LOGOUT"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.849" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

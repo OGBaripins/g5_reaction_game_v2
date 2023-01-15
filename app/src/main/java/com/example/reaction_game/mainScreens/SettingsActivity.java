@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.reaction_game.R;
+import com.example.reaction_game.startScreens.EntryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -48,6 +49,21 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void goToAccount(){
         Intent myIntent = new Intent(this, AccountActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void gotoEntry(){
+        Intent myIntent = new Intent(this, EntryActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void gotoUsernameChange(){
+        Intent myIntent = new Intent(this, UsernameChange.class);
+        startActivity(myIntent);
+    }
+
+    public void resetScores(){
+        Intent myIntent = new Intent(this, UsernameChange.class);
         startActivity(myIntent);
     }
 }
