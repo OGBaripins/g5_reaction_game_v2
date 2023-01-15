@@ -57,4 +57,14 @@
         app:menu="@menu/bottom_navigation_menu"
         tools:layout_editor_absoluteX="-16dp" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="255dp"
+        android:layout_height="347dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="212dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgbox" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

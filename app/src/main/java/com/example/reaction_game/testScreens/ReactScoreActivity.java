@@ -2,7 +2,10 @@ package com.example.reaction_game.testScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -15,17 +18,20 @@ import java.text.DecimalFormat;
 public class ReactScoreActivity extends AppCompatActivity {
 
     DecimalFormat df = new DecimalFormat("0.0000");
+    SharedPreferences sp;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_score);
+        sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
         TextView resNow = findViewById(R.id.textResultNow);
         resNow.setText(df.format(ReactTest1Activity.resultTime / 1000) + " sec");
         TextView resBest = findViewById(R.id.textResultBest);
-        resBest.setText(df.format(ReactTest1Activity.resultBest / 1000) + " sec");
+        resBest.setText(df.format(sp.getFloat("resultRT1Best",0)/ 1000) + " sec");
         TextView resAVG = findViewById(R.id.textResultAVG);
-        resAVG.setText(df.format(ReactTest1Activity.resultAVG / 1000) + " sec");
+        resAVG.setText(df.format(sp.getFloat("resultRT1AVG",0)/ 1000) + " sec");
     }
 
     public void goToReact(View v){

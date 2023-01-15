@@ -10,16 +10,12 @@ import android.view.View;
 
 import com.example.reaction_game.R;
 
-import java.util.ArrayList;
-
 public class ReactTest1Activity extends AppCompatActivity {
 
     static long startTime = 0;
     static double resultTime = 0;
-    static double resultBest = 0;
-    static double resultAVG = 0;
-    static ArrayList<Double> results = new ArrayList<Double>();
     SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,30 +27,15 @@ public class ReactTest1Activity extends AppCompatActivity {
 
     public void goToResult(View v){
         resultTime = (System.currentTimeMillis() - startTime);
-        if (resultTime < resultBest || resultBest == 0) {
-            resultBest = resultTime;
+        editor = sp.edit();
+        editor.putInt("gamesPlayedRT1", sp.getInt("gamesPlayedRT1",0) + 1);
+        if (resultTime < sp.getFloat("resultRT1Best",0) || sp.getFloat("resultRT1Best",0) == 0) {
+            editor.putFloat("resultRT1Best", (float)resultTime);
         }
-        results.add(resultTime);
-        resultAVG = calcAVG();
-        saveToSP(resultBest, resultAVG);
+        editor.putFloat("resultRT1Sum", sp.getFloat("resultRT1Sum",0) + (float)resultTime);
+        editor.putFloat("resultRT1AVG", (sp.getFloat("resultRT1Sum",0) / sp.getInt("gamesPlayedRT1", 1)));
+        editor.commit();
         Intent myIntent = new Intent(this, ReactScoreActivity.class);
         startActivity(myIntent);
-    }
-
-    public double calcAVG(){
-        double avg = 0;
-        for (double result: results) {
-            avg += result;
-        }
-        avg /= results.size();
-        return avg;
-    }
-
-    public void saveToSP(double resultBest, double resultAVG){
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("gamesPlayed", sp.getInt("gamesPlayed",0) + 1);
-        editor.putString("resultBest", resultBest + "");
-        editor.putString("resultAVG", resultAVG + "");
-        editor.commit();
     }
 }
