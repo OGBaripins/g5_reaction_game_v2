@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/bgBlue2"
-        android:layout_width="810dp"
-        android:layout_height="916dp"
-        android:layout_marginStart="-190dp"
-        android:layout_marginTop="-80dp"
+        android:layout_width="700dp"
+        android:layout_height="1200dp"
+        android:layout_marginStart="-120dp"
+        android:layout_marginTop="-220dp"
         android:clickable="true"
         android:contentDescription="@string/desc"
         android:onClick="goToResult"

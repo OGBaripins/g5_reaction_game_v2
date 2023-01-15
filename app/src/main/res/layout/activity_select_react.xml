@@ -8,10 +8,10 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="606dp"
-        android:layout_height="905dp"
-        android:layout_marginStart="-100dp"
-        android:layout_marginTop="-60dp"
+        android:layout_width="700dp"
+        android:layout_height="1200dp"
+        android:layout_marginStart="-120dp"
+        android:layout_marginTop="-220dp"
         android:contentDescription="@string/desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
