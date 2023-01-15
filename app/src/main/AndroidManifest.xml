@@ -26,7 +26,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".testScreens.ReactTest1Mid"
+            android:name=".testScreens.ReactTest1Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
