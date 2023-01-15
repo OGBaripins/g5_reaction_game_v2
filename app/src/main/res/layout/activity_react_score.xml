@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReactScoreActivity">
+    tools:context=".testScreens.ReactScoreActivity">
 
     <ImageView
         android:id="@+id/imageView14"
@@ -23,6 +23,7 @@
         android:layout_height="165dp"
         android:layout_marginStart="84dp"
         android:layout_marginTop="160dp"
+        android:contentDescription="@string/app_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/editbox_dropdown_dark_frame" />

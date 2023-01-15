@@ -1,10 +1,12 @@
-package com.example.reaction_game;
+package com.example.reaction_game.mainScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.reaction_game.R;
 
 public class SelectMemoryActivity extends AppCompatActivity {
 

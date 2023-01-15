@@ -1,11 +1,13 @@
-package com.example.reaction_game;
+package com.example.reaction_game.startScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
+import com.example.reaction_game.mainScreens.MainActivity;
+import com.example.reaction_game.R;
 
 public class EntryActivity extends AppCompatActivity {
 

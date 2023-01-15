@@ -1,4 +1,4 @@
-package com.example.reaction_game;
+package com.example.reaction_game.testScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.example.reaction_game.R;
 
 import java.util.Random;
 

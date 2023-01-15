@@ -1,10 +1,13 @@
-package com.example.reaction_game;
+package com.example.reaction_game.mainScreens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.reaction_game.R;
+import com.example.reaction_game.testScreens.ReactTest1PreActivity;
 
 public class SelectReactActivity extends AppCompatActivity {
 

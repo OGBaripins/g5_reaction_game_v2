@@ -12,56 +12,56 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reactiongame">
         <activity
-            android:name=".ReactTest1Mid"
+            android:name=".testScreens.ReactTest1Mid"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ReactScoreActivity"
+            android:name=".testScreens.ReactScoreActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".ReactTest1PreActivity"
+            android:name=".testScreens.ReactTest1PreActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".AccountActivity"
+            android:name=".mainScreens.AccountActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".mainScreens.SettingsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SelectMemoryActivity"
+            android:name=".mainScreens.SelectMemoryActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SelectReactActivity"
+            android:name=".mainScreens.SelectReactActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".EntryActivity"
+            android:name=".startScreens.EntryActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,9 +73,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".startScreens.RegisterActivity" />
+        <activity android:name=".startScreens.LoginActivity" />
+        <activity android:name=".mainScreens.MainActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.reaction_game;
+package com.example.reaction_game.startScreens;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.reaction_game.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
