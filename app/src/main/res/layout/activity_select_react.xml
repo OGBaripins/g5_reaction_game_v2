@@ -77,4 +77,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/buttonbackblack"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="412dp"
+        android:layout_height="219dp"
+        android:contentDescription="@string/desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/imgreaction" />
 </androidx.constraintlayout.widget.ConstraintLayout>
