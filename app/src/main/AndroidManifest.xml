@@ -12,6 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reactiongame">
         <activity
+            android:name=".testScreens.MemoryScoreActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".mainScreens.StatsActivity"
             android:exported="false">
             <meta-data
