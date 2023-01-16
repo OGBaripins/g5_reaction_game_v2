@@ -29,9 +29,9 @@ public class ReactScoreActivity extends AppCompatActivity {
         TextView resNow = findViewById(R.id.textResultNow);
         resNow.setText(df.format(ReactTest1Activity.resultTime / 1000) + " sec");
         TextView resBest = findViewById(R.id.textResultBest);
-        resBest.setText(df.format(sp.getFloat("resultRT1Best",0)/ 1000) + " sec");
+        resBest.setText(df.format(sp.getFloat("CH_best_result",0)/ 1000) + " sec");
         TextView resAVG = findViewById(R.id.textResultAVG);
-        resAVG.setText(df.format(sp.getFloat("resultRT1AVG",0)/ 1000) + " sec");
+        resAVG.setText(df.format(sp.getFloat("CH_result_average",0)/ 1000) + " sec");
     }
 
     public void goToReact(View v){

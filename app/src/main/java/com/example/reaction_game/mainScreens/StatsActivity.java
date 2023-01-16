@@ -18,6 +18,7 @@ import com.example.reaction_game.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Locale;
 import java.util.Map;
 
 public class StatsActivity extends AppCompatActivity {
@@ -59,7 +60,8 @@ public class StatsActivity extends AppCompatActivity {
 
         for (Map.Entry<String, ?> entry : map.entrySet()) {
             TextView tv = new TextView(this);
-            tv.setText(""+entry.getKey() + " : " + entry.getValue());
+            if(entry.getKey().split("_")[entry.getKey().split("_").length-1].equals("sum")){continue;}
+            tv.setText(""+entry.getKey().replace("_"," ").toUpperCase(Locale.ROOT) + " : " + entry.getValue());
             tv.setTextSize(20);
             tv.setPadding(10, 10, 0, 10);
             tv.setTextColor(Color.parseColor("#FFFFFF"));

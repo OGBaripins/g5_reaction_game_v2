@@ -20,7 +20,7 @@ public class AccountActivity extends AppCompatActivity {
     BottomNavigationView nav;
     SharedPreferences sp;
     DecimalFormat df = new DecimalFormat("0.0000");
-    TextView game_played_value, best_reaction_value, avg_reaction_value;
+    TextView game_played_value, mct_best_result_value, ch_best_result_value;
 
     @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     @Override
@@ -28,7 +28,7 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        game_played_value = findViewById(R.id.game_played_value); best_reaction_value = findViewById(R.id.best_reaction_value); avg_reaction_value = findViewById(R.id.avg_reaction_value);
+        game_played_value = findViewById(R.id.game_played_value); mct_best_result_value = findViewById(R.id.mct_best_result_value); ch_best_result_value = findViewById(R.id.ch_best_result_value);
 
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.account);
@@ -48,9 +48,9 @@ public class AccountActivity extends AppCompatActivity {
 
         sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
 
-        game_played_value.setText(df.format(sp.getInt("gamesPlayedRT1", 0)));
-        best_reaction_value.setText(df.format(sp.getFloat("resultRT1Best", 0)/1000));
-        avg_reaction_value.setText(df.format(sp.getFloat("resultRT1AVG", 0)/1000));
+        game_played_value.setText(Integer.toString(sp.getInt("all_games_played", 0)));
+        ch_best_result_value.setText(df.format(sp.getFloat("CH_best_result", 0)/1000));
+        mct_best_result_value.setText(Integer.toString(sp.getInt("MCT_best_result", 0))); // For memory test
 
     }
 

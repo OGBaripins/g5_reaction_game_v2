@@ -116,9 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         okay_text.setOnClickListener(v -> {
             SharedPreferences.Editor score_editor = sp_score.edit();
-            score_editor.putInt("gamesPlayedRT1", 0);
-            score_editor.putFloat("resultRT1Best", 0);
-            score_editor.putFloat("resultRT1AVG", 0);
+            score_editor.clear();
             score_editor.commit();
             Toast.makeText(SettingsActivity.this,"Scores has been reset", Toast.LENGTH_LONG).show();
             dialog.dismiss();
