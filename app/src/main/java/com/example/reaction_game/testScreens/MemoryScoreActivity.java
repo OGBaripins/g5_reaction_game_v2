@@ -15,7 +15,7 @@ import com.example.reaction_game.mainScreens.SelectMemoryActivity;
 
 public class MemoryScoreActivity extends AppCompatActivity {
 
-    SharedPreferences sp;
+    SharedPreferences sp, sp_user;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -23,14 +23,23 @@ public class MemoryScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_score);
         sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
+        sp_user = getSharedPreferences("UserPrefs",Context.MODE_PRIVATE);
         TextView text = findViewById(R.id.textLevelReached);
         text.setText(MemoryTest1Activity.level + "");
         text = findViewById(R.id.textScore);
         text.setText(MemoryTest1Activity.score + "");
         text = findViewById(R.id.textScoreBest);
-        text.setText(Integer.toString(sp.getInt("MCT_best_result", 0)));
+        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
+            text.setText(Integer.toString(sp.getInt("MCT_best_result", 0)));
+        } else {
+            text.setText(0+"");
+        }
         text = findViewById(R.id.textScoreAVG);
-        text.setText(Integer.toString(sp.getInt("MCT_result_average", 0)));
+        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
+            text.setText(Integer.toString(sp.getInt("MCT_result_average", 0)));
+        } else {
+            text.setText(0+"");
+        }
     }
 
     public void goToMemorySelect(View v){

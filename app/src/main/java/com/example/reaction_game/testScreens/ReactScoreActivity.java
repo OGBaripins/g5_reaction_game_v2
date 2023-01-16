@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 public class ReactScoreActivity extends AppCompatActivity {
 
     DecimalFormat df = new DecimalFormat("0.0000");
-    SharedPreferences sp;
+    SharedPreferences sp, sp_user;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -26,12 +26,21 @@ public class ReactScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_score);
         sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
-        TextView resNow = findViewById(R.id.textResultNow);
-        resNow.setText(df.format(ReactTest1Activity.resultTime / 1000) + " sec");
-        TextView resBest = findViewById(R.id.textResultBest);
-        resBest.setText(df.format(sp.getFloat("CH_best_result",0)/ 1000) + " sec");
-        TextView resAVG = findViewById(R.id.textResultAVG);
-        resAVG.setText(df.format(sp.getFloat("CH_result_average",0)/ 1000) + " sec");
+        sp_user = getSharedPreferences("UserPrefs",Context.MODE_PRIVATE);
+        TextView text = findViewById(R.id.textResultNow);
+        text.setText(df.format(ReactTest1Activity.resultTime / 1000) + " sec");
+        text = findViewById(R.id.textResultBest);
+        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
+            text.setText(df.format(sp.getFloat("CH_best_result",0)/ 1000) + " sec");
+        } else {
+            text.setText(0+"");
+        }
+        text = findViewById(R.id.textResultAVG);
+        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
+            text.setText(df.format(sp.getFloat("CH_result_average",0)/ 1000) + " sec");
+        } else {
+            text.setText(0+"");
+        }
     }
 
     public void goToReact(View v){
