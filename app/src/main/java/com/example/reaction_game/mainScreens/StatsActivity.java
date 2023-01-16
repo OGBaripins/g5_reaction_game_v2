@@ -7,29 +7,29 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.reaction_game.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class AccountActivity extends AppCompatActivity {
+import java.util.Map;
 
-    BottomNavigationView nav;
+public class StatsActivity extends AppCompatActivity {
+
     SharedPreferences sp;
-    String temp;
-    TextView game_played_value, best_reaction_value, avg_reaction_value;
+    BottomNavigationView nav;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
-
-        game_played_value = findViewById(R.id.game_played_value); best_reaction_value = findViewById(R.id.best_reaction_value); avg_reaction_value = findViewById(R.id.avg_reaction_value);
+        setContentView(R.layout.activity_stats);
 
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.account);
@@ -39,23 +39,39 @@ public class AccountActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.account:
+                        goToAccount();
                         break;
                     case R.id.settings:
                         goToSettings();
                         break;
                     case R.id.home:
                         gotoMainMenu();
+                        break;
                 }
                 return false;
             }
         });
 
+        LinearLayout ll = (LinearLayout) findViewById(R.id.linear_layout);
+
         sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
+        Map<String, ?> map = sp.getAll();
 
-        game_played_value.setText(""+sp.getInt("gamesPlayedRT1", 0));
-        best_reaction_value.setText(""+sp.getFloat("resultRT1Best", 0));
-        avg_reaction_value.setText(""+sp.getFloat("resultRT1AVG", 0));
+        for (Map.Entry<String, ?> entry : map.entrySet()) {
+            TextView tv = new TextView(this);
+            tv.setText(""+entry.getKey() + " : " + entry.getValue());
+            tv.setTextSize(20);
+            tv.setPadding(10, 10, 0, 10);
+            tv.setTextColor(Color.parseColor("#FFFFFF"));
+            tv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            ll.addView(tv);
+        }
 
+    }
+
+    public void goToAccount(){
+        Intent myIntent = new Intent(this, AccountActivity.class);
+        startActivity(myIntent);
     }
 
     public void gotoMainMenu(){
@@ -63,13 +79,9 @@ public class AccountActivity extends AppCompatActivity {
         startActivity(myIntent);
     }
 
-    public void gotoStats(View view){
-        Intent myIntent = new Intent(this, StatsActivity.class);
-        startActivity(myIntent);
-    }
-
     public void goToSettings(){
         Intent myIntent = new Intent(this, SettingsActivity.class);
         startActivity(myIntent);
     }
+
 }

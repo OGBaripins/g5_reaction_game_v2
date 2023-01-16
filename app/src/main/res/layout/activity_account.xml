@@ -62,7 +62,7 @@
         android:layout_width="344dp"
         android:layout_height="79dp"
         android:backgroundTint="@color/button_grey"
-        android:onClick="changeUsername"
+        android:onClick="gotoStats"
         android:text="MORE STATS"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
