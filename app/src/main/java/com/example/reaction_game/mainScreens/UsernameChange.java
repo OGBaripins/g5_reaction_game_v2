@@ -71,9 +71,13 @@ public class UsernameChange extends AppCompatActivity {
         EditText username_str = findViewById(R.id.new_username_field);
 
         if(cur_username != null && !cur_username.equals(username_str.getText().toString())){
-            editor.putString("username", username_str.getText().toString());
-            editor.commit();
-            goToSettings();
+            if(username_str.getText().toString().length() >= 3){
+                editor.putString("username", username_str.getText().toString());
+                editor.commit();
+                goToSettings();
+            }else{
+                Toast.makeText(UsernameChange.this, "Username has to be more than 3 characters long", Toast.LENGTH_SHORT).show();
+            }
         }else{
             Toast.makeText(UsernameChange.this, "Cant changed username to the same one.", Toast.LENGTH_SHORT).show();
         }
