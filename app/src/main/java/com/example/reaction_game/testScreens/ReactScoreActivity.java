@@ -20,6 +20,11 @@ public class ReactScoreActivity extends AppCompatActivity {
     DecimalFormat df = new DecimalFormat("0.0000");
     SharedPreferences sp, sp_user;
 
+    @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

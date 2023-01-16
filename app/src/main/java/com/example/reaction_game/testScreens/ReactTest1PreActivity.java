@@ -15,6 +15,11 @@ import java.util.Random;
 public class ReactTest1PreActivity extends AppCompatActivity {
 
     @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_test1_pre);

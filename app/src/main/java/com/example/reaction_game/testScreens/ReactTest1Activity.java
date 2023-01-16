@@ -18,6 +18,11 @@ public class ReactTest1Activity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_test1);

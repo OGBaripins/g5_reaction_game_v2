@@ -28,6 +28,11 @@ public class MemoryTest1Activity extends AppCompatActivity {
     SharedPreferences sp, sp_user;
     SharedPreferences.Editor editor;
 
+    @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

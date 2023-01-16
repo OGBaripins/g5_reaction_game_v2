@@ -22,6 +22,11 @@ public class AccountActivity extends AppCompatActivity {
     DecimalFormat df = new DecimalFormat("0.0000");
     TextView game_played_value, mct_best_result_value, ch_best_result_value;
 
+    @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
     @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {

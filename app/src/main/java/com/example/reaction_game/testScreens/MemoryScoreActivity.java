@@ -17,6 +17,11 @@ public class MemoryScoreActivity extends AppCompatActivity {
 
     SharedPreferences sp, sp_user;
 
+    @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

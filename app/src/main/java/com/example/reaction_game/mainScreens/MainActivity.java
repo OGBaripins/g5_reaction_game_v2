@@ -21,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sp;
 
     @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

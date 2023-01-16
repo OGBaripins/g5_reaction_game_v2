@@ -26,6 +26,11 @@ public class StatsActivity extends AppCompatActivity {
     SharedPreferences sp;
     BottomNavigationView nav;
 
+    @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

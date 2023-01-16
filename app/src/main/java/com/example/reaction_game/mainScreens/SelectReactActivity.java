@@ -22,6 +22,11 @@ public class SelectReactActivity extends AppCompatActivity {
     SharedPreferences sp;
 
     @Override
+    public void onBackPressed() {
+        // Do nothing lol
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_react);
@@ -29,7 +34,7 @@ public class SelectReactActivity extends AppCompatActivity {
         sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         nav = findViewById(R.id.bottom_navigation);
-        nav.setSelectedItemId(R.id.settings);
+        nav.setSelectedItemId(R.id.home);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
