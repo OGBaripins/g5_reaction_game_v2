@@ -28,9 +28,9 @@ public class MemoryScoreActivity extends AppCompatActivity {
         text = findViewById(R.id.textScore);
         text.setText(MemoryTest1Activity.score + "");
         text = findViewById(R.id.textScoreBest);
-        text.setText(sp.getInt("resultMemoryT1Best", 0) + "");
+        text.setText(Integer.toString(sp.getInt("MCT_best_result", 0)));
         text = findViewById(R.id.textScoreAVG);
-        text.setText(sp.getInt("resultMemoryT1AVG", 0) + "");
+        text.setText(Integer.toString(sp.getInt("MCT_result_average", 0)));
     }
 
     public void goToMemorySelect(View v){
