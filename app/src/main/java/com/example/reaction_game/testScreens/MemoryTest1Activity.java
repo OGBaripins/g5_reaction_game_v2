@@ -25,7 +25,7 @@ public class MemoryTest1Activity extends AppCompatActivity {
     int index, patternDelay = 300, sqCount = 4, move, timerIndex;
     int[] coordinates = new int[sqCount*2+2];
     ArrayList<Integer> pattern = new ArrayList<>();
-    SharedPreferences sp;
+    SharedPreferences sp, sp_user;
     SharedPreferences.Editor editor;
 
     @SuppressLint("MissingInflatedId")
@@ -34,6 +34,7 @@ public class MemoryTest1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_test1);
         sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
+        sp_user = getSharedPreferences("UserPrefs",Context.MODE_PRIVATE);
         sqIndicator = findViewById(R.id.memorySqIndicator);
         addCoordinates(-8000, -8000, 0); // offScreen
         addCoordinates(16, 42, 1); // sq1
@@ -128,15 +129,17 @@ public class MemoryTest1Activity extends AppCompatActivity {
     }
 
     public void endTest(View v){
-        editor = sp.edit();
-        editor.putInt("all_games_played", sp.getInt("all_games_played",0) + 1); // Take if you need to count all games played!!
-        editor.putInt("MCT_games_played", sp.getInt("MCT_games_played",0) + 1);
-        if (score > sp.getInt("MCT_best_result",0) || sp.getInt("MCT_best_result",0) == 0) {
-            editor.putInt("MCT_best_result", score);
+        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
+            editor = sp.edit();
+            editor.putInt("all_games_played", sp.getInt("all_games_played", 0) + 1); // Take if you need to count all games played!!
+            editor.putInt("MCT_games_played", sp.getInt("MCT_games_played", 0) + 1);
+            if (score > sp.getInt("MCT_best_result", 0) || sp.getInt("MCT_best_result", 0) == 0) {
+                editor.putInt("MCT_best_result", score);
+            }
+            editor.putInt("MCT_result_sum", sp.getInt("MCT_result_sum", 0) + score);
+            editor.putInt("MCT_result_average", (sp.getInt("MCT_result_sum", 0) / sp.getInt("MCT_games_played", 1)));
+            editor.commit();
         }
-        editor.putInt("MCT_result_sum", sp.getInt("MCT_result_sum",0) + score);
-        editor.putInt("MCT_result_average", (sp.getInt("MCT_result_average",0) / sp.getInt("MCT_games_played", 1)));
-        editor.commit();
         Intent myIntent = new Intent(this, MemoryScoreActivity.class);
         startActivity(myIntent);
     }
