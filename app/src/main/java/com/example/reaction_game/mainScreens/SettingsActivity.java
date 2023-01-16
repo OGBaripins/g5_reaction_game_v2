@@ -3,6 +3,7 @@ package com.example.reaction_game.mainScreens;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -44,6 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
@@ -112,25 +114,17 @@ public class SettingsActivity extends AppCompatActivity {
         TextView okay_text = dialog.findViewById(R.id.okay_text);
         TextView cancel_text = dialog.findViewById(R.id.cancel_text);
 
-        okay_text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences.Editor score_editor = sp_score.edit();
-                score_editor.putInt("gamesPlayedRT1", 0);
-                score_editor.putFloat("resultRT1Best", 0);
-                score_editor.putFloat("resultRT1AVG", 0);
-                score_editor.commit();
-                Toast.makeText(SettingsActivity.this,"Scores has been reset", Toast.LENGTH_LONG).show();
-                dialog.dismiss();
-            }
+        okay_text.setOnClickListener(v -> {
+            SharedPreferences.Editor score_editor = sp_score.edit();
+            score_editor.putInt("gamesPlayedRT1", 0);
+            score_editor.putFloat("resultRT1Best", 0);
+            score_editor.putFloat("resultRT1AVG", 0);
+            score_editor.commit();
+            Toast.makeText(SettingsActivity.this,"Scores has been reset", Toast.LENGTH_LONG).show();
+            dialog.dismiss();
         });
 
-        cancel_text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        cancel_text.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
 }
