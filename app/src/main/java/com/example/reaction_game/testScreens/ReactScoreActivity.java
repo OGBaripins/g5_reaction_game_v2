@@ -19,6 +19,7 @@ public class ReactScoreActivity extends AppCompatActivity {
 
     DecimalFormat df = new DecimalFormat("0.0000");
     SharedPreferences sp, sp_user;
+    TextView text;
 
     @Override
     public void onBackPressed() {
@@ -30,21 +31,29 @@ public class ReactScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_react_score);
-        sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
-        sp_user = getSharedPreferences("UserPrefs",Context.MODE_PRIVATE);
-        TextView text = findViewById(R.id.textResultNow);
-        text.setText(df.format(ReactTest1Activity.resultTime / 1000) + " sec");
-        text = findViewById(R.id.textResultBest);
-        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
-            text.setText(df.format(sp.getFloat("CH_best_result",0)/ 1000) + " sec");
+
+        if (ReactTest1Activity.clickedTooFast){
+            TextView text = findViewById(R.id.textFail);
+            text.setText("You clicked the screen too fast!\nWant to try again?");
         } else {
-            text.setText(0+"");
-        }
-        text = findViewById(R.id.textResultAVG);
-        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
-            text.setText(df.format(sp.getFloat("CH_result_average",0)/ 1000) + " sec");
-        } else {
-            text.setText(0+"");
+            sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
+            sp_user = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+            text = findViewById(R.id.textScoreStats);
+            text.setVisibility(View.VISIBLE);
+            text = findViewById(R.id.textResultNow);
+            text.setText(df.format(ReactTest1Activity.resultTime / 1000) + " sec");
+            text = findViewById(R.id.textResultBest);
+            if (sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
+                text.setText(df.format(sp.getFloat("CH_best_result", 0) / 1000) + " sec");
+            } else {
+                text.setText(0 + "");
+            }
+            text = findViewById(R.id.textResultAVG);
+            if (sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
+                text.setText(df.format(sp.getFloat("CH_result_average", 0) / 1000) + " sec");
+            } else {
+                text.setText(0 + "");
+            }
         }
     }
 
@@ -54,7 +63,7 @@ public class ReactScoreActivity extends AppCompatActivity {
     }
 
     public void goRTest1(View v){
-        Intent myIntent = new Intent(this, ReactTest1PreActivity.class);
+        Intent myIntent = new Intent(this, ReactTest1Activity.class);
         startActivity(myIntent);
     }
 }

@@ -70,8 +70,7 @@ public class MemoryTest1Activity extends AppCompatActivity {
             pattern.add((new Random().nextInt((4 - 1) + 1) + 1));
         }
         pattern.add(0);
-        Animation moveIndicator = new Animation() {
-        };
+        Animation moveIndicator = new Animation() {};
         moveIndicator.setDuration(patternDelay);
         moveIndicator.setRepeatCount(pattern.size()*2);
         moveIndicator.setAnimationListener(new Animation.AnimationListener(){

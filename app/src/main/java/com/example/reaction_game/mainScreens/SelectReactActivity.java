@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.reaction_game.R;
-import com.example.reaction_game.testScreens.ReactTest1PreActivity;
+import com.example.reaction_game.testScreens.ReactTest1Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -75,7 +75,7 @@ public class SelectReactActivity extends AppCompatActivity {
     }
 
     public void goRTest1(View v){
-        Intent myIntent = new Intent(this, ReactTest1PreActivity.class);
+        Intent myIntent = new Intent(this, ReactTest1Activity.class);
         startActivity(myIntent);
     }
 }

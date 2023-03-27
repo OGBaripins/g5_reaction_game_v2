@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".testScreens.ReactTest1PreActivity">
+    tools:context=".testScreens.ReactTest1Activity">
 
     <ImageView
         android:id="@+id/bgPink"
@@ -12,12 +12,28 @@
         android:layout_height="1200dp"
         android:layout_marginStart="-120dp"
         android:layout_marginTop="-220dp"
+        android:clickable="false"
         android:contentDescription="@string/desc"
-        android:onClick="startRTest1"
+        android:onClick="goToFail"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bgpink"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        tools:ignore="DuplicateSpeakableTextCheck,DuplicateClickableBoundsCheck" />
+
+    <ImageView
+        android:id="@+id/bgBlue"
+        android:layout_width="700dp"
+        android:layout_height="1200dp"
+        android:layout_marginStart="-1000dp"
+        android:layout_marginTop="-220dp"
+        android:clickable="true"
+        android:contentDescription="@string/desc"
+        android:onClick="goToResult"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgblue" />
 
     <ImageView
         android:id="@+id/descReactT1"
@@ -26,6 +42,7 @@
         android:layout_marginStart="72dp"
         android:layout_marginTop="100dp"
         android:contentDescription="@string/desc"
+        android:onClick="startRTest1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/descreactt1" />

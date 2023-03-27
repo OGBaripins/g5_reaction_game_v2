@@ -1,5 +1,6 @@
 package com.example.reaction_game.mainScreens;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){

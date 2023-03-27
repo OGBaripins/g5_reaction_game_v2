@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Time"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textScoreStats"
         app:layout_constraintTop_toTopOf="@+id/imgTextBox" />
@@ -45,7 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
-        android:text="BestTime"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textScoreStats"
         app:layout_constraintTop_toTopOf="@+id/imgTextBox" />
@@ -56,7 +54,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="104dp"
-        android:text="AvgTime"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textScoreStats"
         app:layout_constraintTop_toTopOf="@+id/imgTextBox" />
@@ -68,6 +65,18 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="Time:\n\nBest time:\n\nAverage time"
+        android:textAlignment="viewEnd"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/imgTextBox"
+        app:layout_constraintTop_toTopOf="@+id/imgTextBox" />
+
+    <TextView
+        android:id="@+id/textFail"
+        android:layout_width="192dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:textAlignment="viewEnd"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/imgTextBox"
