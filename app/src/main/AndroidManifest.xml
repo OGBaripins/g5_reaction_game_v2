@@ -29,14 +29,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reactiongame">
         <activity
-            android:name=".mainScreens.CameraKActivity"
+            android:name=".mainScreens.PhotoActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".testScreens.AudioActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
-            <meta-data
-                android:name=" androidx.camera.camera_provider"
-                android:value="camera2"/>
         </activity>
         <activity
             android:name=".testScreens.MemoryScoreActivity"

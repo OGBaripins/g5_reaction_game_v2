@@ -77,7 +77,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     public void goToCamera(View v){
-        Intent myIntent = new Intent(this, CameraKActivity.class);
+        Intent myIntent = new Intent(this, PhotoActivity.class);
         startActivity(myIntent);
     }
 }

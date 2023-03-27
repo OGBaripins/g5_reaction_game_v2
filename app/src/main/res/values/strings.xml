@@ -2,5 +2,21 @@
     <string name="app_name">reaction-game</string>
     <string name="desc">img_temp</string>
     <string name="ReactT1_desc">To start test, press the pink screen. When the screen turns blue, click as fast as possible.</string>
+    <string name="start_capture">START CAPTURE</string>
+    <string name="more_stats">MORE STATS</string>
+    <string name="change_avatar">Change Avatar</string>
+    <string name="stats">STATS</string>
+    <string name="todo">TODO</string>
+    <string name="blankScore">---</string>
+    <string name="mct_best_result">MCT BEST RESULT</string>
+    <string name="games_played">GAMES PLAYED</string>
+    <string name="ch_best_result">CH BEST RESULT</string>
+    <string name="stop_recording">STOP RECORDING</string>
+    <string name="play_recording">PLAY RECORDING</string>
+    <string name="display_recording">DISPLAY RECORDING</string>
+    <string name="start_recording">START RECORDING</string>
+    <string name="later">LATER</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
 
 </resources>
