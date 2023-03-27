@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "681252596298",
+    "project_id": "groupproject-g5",
+    "storage_bucket": "groupproject-g5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681252596298:android:096ace63fd30fcf1ee94b3",
+        "android_client_info": {
+          "package_name": "com.example.reaction_game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681252596298-4h7m5a5nrib54ptjeaplt41agrne68pr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb0G8-wAVkzxeilRbHA2eGIDSZJTZ6k1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681252596298-4h7m5a5nrib54ptjeaplt41agrne68pr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
