@@ -151,9 +151,11 @@ public class MemoryTest1Activity extends AppCompatActivity {
     }
     public void endTest(View v) {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) { // To not count scores if not logged in!!
+
             // Create a new user with a first, middle, and last name
             String cur_user_email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
             assert cur_user_email != null;
+            general_games_played(cur_user_email);
             db.collection(cur_user_email)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -176,8 +178,6 @@ public class MemoryTest1Activity extends AppCompatActivity {
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                     return_data = document.getData();
                                     Log.d(TAG, return_data + " return data");
-
-                                    user.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("all_games_played")).toString()) + 1);
                                     user.put("MCT_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()) + 1);
                                     if (score > Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()) ||
                                             Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()) == 0) {
@@ -223,5 +223,42 @@ public class MemoryTest1Activity extends AppCompatActivity {
         }
         Intent myIntent = new Intent(this, MemoryScoreActivity.class);
         startActivity(myIntent);
+    }
+
+    public void general_games_played(String cur_user_email){
+        db.collection(cur_user_email)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Map<String, Object> user = new HashMap<>();
+                        if (task.isSuccessful()) {
+                            if(task.getResult().size() == 0){
+                                user.put("all_games_played", 1);
+                            }
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(!document.getId().equals("GENERAL")){continue;}
+                                return_data = document.getData();
+                                user.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("all_games_played")).toString()) + 1);
+                                }
+                            db.collection(cur_user_email).document("GENERAL")
+                                    .set(user)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w(TAG, "Error writing document", e);
+                                        }
+                                    });
+                        } else {
+                            Log.d(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
     }
 }
