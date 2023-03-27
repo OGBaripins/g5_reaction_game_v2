@@ -1,5 +1,8 @@
 package com.example.reaction_game.testScreens;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -7,15 +10,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.reaction_game.R;
 import com.example.reaction_game.mainScreens.SelectMemoryActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class MemoryScoreActivity extends AppCompatActivity {
 
     SharedPreferences sp, sp_user;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    Map<String, Object> return_data;
 
     @Override
     public void onBackPressed() {
@@ -27,24 +47,45 @@ public class MemoryScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_score);
-        sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
-        sp_user = getSharedPreferences("UserPrefs",Context.MODE_PRIVATE);
-        TextView text = findViewById(R.id.textLevelReached);
-        text.setText(MemoryTest1Activity.level + "");
-        text = findViewById(R.id.textScore);
-        text.setText(MemoryTest1Activity.score + "");
-        text = findViewById(R.id.textScoreBest);
-        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
-            text.setText(Integer.toString(sp.getInt("MCT_best_result", 0)));
-        } else {
-            text.setText(0+"");
+        String cur_user_email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        assert cur_user_email != null;
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
-        text = findViewById(R.id.textScoreAVG);
-        if(sp_user.getBoolean("isLoggedIn", false)) { // To not count scores if not logged in!!
-            text.setText(Integer.toString(sp.getInt("MCT_result_average", 0)));
-        } else {
-            text.setText(0+"");
-        }
+        db.collection(cur_user_email)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                return_data = document.getData();
+                                TextView text = findViewById(R.id.textLevelReached);
+                                text.setText(MemoryTest1Activity.level + "");
+                                text = findViewById(R.id.textScore);
+                                text.setText(MemoryTest1Activity.score + "");
+                                text = findViewById(R.id.textScoreBest);
+
+                                if(FirebaseAuth.getInstance().getCurrentUser() != null) { // To not count scores if not logged in!!
+                                    text.setText(Objects.requireNonNull(return_data.get("MCT_best_result")).toString());
+                                } else {
+                                    text.setText(0+"");
+                                }
+                                text = findViewById(R.id.textScoreAVG);
+                                if(FirebaseAuth.getInstance().getCurrentUser() != null) { // To not count scores if not logged in!!
+                                    text.setText(Objects.requireNonNull(return_data.get("MCT_result_average")).toString());
+                                } else {
+                                    text.setText(0+"");
+                                }
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
     }
 
     public void goToMemorySelect(View v){

@@ -25,6 +25,8 @@ import com.example.reaction_game.startScreens.EntryActivity;
 import com.example.reaction_game.startScreens.RegisterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -55,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.account:
-                        if(sp.getBoolean("isLoggedIn", false)){
+                        if(FirebaseAuth.getInstance().getCurrentUser() != null){
                             goToAccount();
                         }else{
                             Toast.makeText(SettingsActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
@@ -88,15 +90,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void gotoEntryOnClick(View view){
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean("isLoggedIn",false);
-        editor.commit();
+        FirebaseAuth.getInstance().signOut();
         Intent myIntent = new Intent(this, EntryActivity.class);
         startActivity(myIntent);
     }
 
     public void gotoUsernameChange(View view){
-        if(!sp.getBoolean("isLoggedIn", false)){
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
             Toast.makeText(SettingsActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
             return;
         }
@@ -105,7 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void resetScores(View view){
-        if(!sp.getBoolean("isLoggedIn", false)){
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
             Toast.makeText(SettingsActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
             return;
         }

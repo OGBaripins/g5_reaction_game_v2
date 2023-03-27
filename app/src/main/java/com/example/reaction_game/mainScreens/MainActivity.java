@@ -16,6 +16,7 @@ import com.example.reaction_game.R;
 import com.example.reaction_game.testScreens.AudioActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.account:
-                        if(sp.getBoolean("isLoggedIn", false)){
+                        if(FirebaseAuth.getInstance().getCurrentUser() != null){
                             goToAccount();
                         }else{
                             Toast.makeText(MainActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
