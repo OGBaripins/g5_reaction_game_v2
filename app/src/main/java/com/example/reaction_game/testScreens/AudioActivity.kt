@@ -3,15 +3,11 @@ package com.example.reaction_game.testScreens
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.ContextWrapper
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.Environment
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -23,6 +19,7 @@ import com.example.reaction_game.R
 import java.io.File
 
 
+@Suppress("DEPRECATION")
 class AudioActivity : AppCompatActivity() {
 
     private val microphonePermissionCode = 200
@@ -38,7 +35,7 @@ class AudioActivity : AppCompatActivity() {
         }
     }
 
-    fun startRecording(v: View) {
+    fun startRecording() {
         mediaRecorder = MediaRecorder()
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC)
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
@@ -49,14 +46,14 @@ class AudioActivity : AppCompatActivity() {
         Toast.makeText(this, "Audio recording has started!", Toast.LENGTH_SHORT).show()
     }
 
-    fun stopRecording(v: View) {
+    fun stopRecording() {
         mediaRecorder.stop()
         mediaRecorder.release()
         Toast.makeText(this, "Audio recording has stopped!", Toast.LENGTH_SHORT).show()
     }
 
     @SuppressLint("SetTextI18n")
-    fun selectPreviousRecording(v: View) {
+    fun selectPreviousRecording() {
         val contextWrapper = ContextWrapper(applicationContext)
         if (contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.list()?.isNotEmpty() == true){
             val audioList = File(contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!.path).listFiles()!!
@@ -72,7 +69,7 @@ class AudioActivity : AppCompatActivity() {
         }
     }
 
-    fun selectNextRecording(v: View) {
+    fun selectNextRecording() {
         val contextWrapper = ContextWrapper(applicationContext)
         if (contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.list()?.isNotEmpty() == true){
             val audioList = File(contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!.path).listFiles()!!
@@ -88,6 +85,7 @@ class AudioActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     fun updatePlayButtonText(audioList: Array<File>){
         val audioPath = audioList[selectedAudioID].path.split("/")
         var text = audioPath[audioPath.size-1]
@@ -95,7 +93,7 @@ class AudioActivity : AppCompatActivity() {
         findViewById<Button>(R.id.audio_play).text = "Play Recording$text"
     }
 
-    fun playRecording(v: View) {
+    fun playRecording() {
         val contextWrapper = ContextWrapper(applicationContext)
         if (contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.list()?.isNotEmpty() == true){
             mediaPlayer = MediaPlayer()
@@ -110,7 +108,7 @@ class AudioActivity : AppCompatActivity() {
 
     }
 
-    fun displayRecordedAudio(v: View){
+    fun displayRecordedAudio() {
         val contextWrapper = ContextWrapper(applicationContext)
         val files = File(contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!.path).list()
         val a = files?.let { ArrayAdapter(this, android.R.layout.simple_list_item_1, it) }

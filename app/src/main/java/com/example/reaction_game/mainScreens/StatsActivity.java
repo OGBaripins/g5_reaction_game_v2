@@ -1,22 +1,17 @@
 package com.example.reaction_game.mainScreens;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.reaction_game.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.Locale;
 import java.util.Map;
@@ -31,7 +26,7 @@ public class StatsActivity extends AppCompatActivity {
         // Do nothing lol
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,22 +35,19 @@ public class StatsActivity extends AppCompatActivity {
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.account);
 
-        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.account:
-                        goToAccount();
-                        break;
-                    case R.id.settings:
-                        goToSettings();
-                        break;
-                    case R.id.home:
-                        gotoMainMenu();
-                        break;
-                }
-                return false;
+        nav.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.account:
+                    goToAccount();
+                    break;
+                case R.id.settings:
+                    goToSettings();
+                    break;
+                case R.id.home:
+                    gotoMainMenu();
+                    break;
             }
+            return false;
         });
 
         LinearLayout ll = (LinearLayout) findViewById(R.id.linear_layout);

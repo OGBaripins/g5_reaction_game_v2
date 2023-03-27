@@ -1,20 +1,18 @@
 package com.example.reaction_game.mainScreens;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.reaction_game.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class UsernameChange extends AppCompatActivity {
 
@@ -22,10 +20,9 @@ public class UsernameChange extends AppCompatActivity {
     SharedPreferences sp;
 
     @Override
-    public void onBackPressed() {
-        // Do nothing lol
-    }
+    public void onBackPressed() {}
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,22 +31,19 @@ public class UsernameChange extends AppCompatActivity {
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.settings);
 
-        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.account:
-                        goToAccount();
-                        break;
-                    case R.id.settings:
-                        goToSettings();
-                        break;
-                    case R.id.home:
-                        gotoMainMenu();
-                        break;
-                }
-                return false;
+        nav.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.account:
+                    goToAccount();
+                    break;
+                case R.id.settings:
+                    goToSettings();
+                    break;
+                case R.id.home:
+                    gotoMainMenu();
+                    break;
             }
+            return false;
         });
     }
 
@@ -78,7 +72,7 @@ public class UsernameChange extends AppCompatActivity {
         if(cur_username != null && !cur_username.equals(username_str.getText().toString())){
             if(username_str.getText().toString().length() >= 3){
                 editor.putString("username", username_str.getText().toString());
-                editor.commit();
+                editor.apply();
                 goToSettings();
             }else{
                 Toast.makeText(UsernameChange.this, "Username has to be more than 3 characters long", Toast.LENGTH_SHORT).show();

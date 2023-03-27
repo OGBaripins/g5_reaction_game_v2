@@ -1,61 +1,50 @@
 package com.example.reaction_game.mainScreens;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.reaction_game.R;
 import com.example.reaction_game.testScreens.MemoryTest1Activity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SelectMemoryActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
-    SharedPreferences sp;
 
     @Override
-    public void onBackPressed() {
-        // Do nothing lol
-    }
+    public void onBackPressed() {}
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_memory);
 
-        sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.home);
 
-        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.account:
-                        if(sp.getBoolean("isLoggedIn", false)){
-                            goToAccount();
-                        }else{
-                            Toast.makeText(SelectMemoryActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
-                        }
-                        break;
-                    case R.id.settings:
-                        goToSettings();
-                        break;
-                    case R.id.home:
-                        gotoMainMenu();
-                        break;
-                }
-                return false;
+        nav.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.account:
+                    if(FirebaseAuth.getInstance().getCurrentUser() != null){
+                        goToAccount();
+                    }else{
+                        Toast.makeText(SelectMemoryActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
+                    }
+                    break;
+                case R.id.settings:
+                    goToSettings();
+                    break;
+                case R.id.home:
+                    gotoMainMenu();
+                    break;
             }
+            return false;
         });
     }
 

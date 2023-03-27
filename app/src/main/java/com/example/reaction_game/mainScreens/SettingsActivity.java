@@ -1,44 +1,28 @@
 package com.example.reaction_game.mainScreens;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reaction_game.R;
 import com.example.reaction_game.startScreens.EntryActivity;
-import com.example.reaction_game.startScreens.RegisterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
-    SharedPreferences sp;
-    SharedPreferences sp_score;
 
     @Override
-    public void onBackPressed() {
-        // Do nothing lol
-    }
+    public void onBackPressed() {}
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,30 +31,23 @@ public class SettingsActivity extends AppCompatActivity {
 
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.settings);
-        sp = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-        sp_score = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
 
-
-        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.account:
-                        if(FirebaseAuth.getInstance().getCurrentUser() != null){
-                            goToAccount();
-                        }else{
-                            Toast.makeText(SettingsActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
-                        }
-                        break;
-                    case R.id.settings:
-                        break;
-                    case R.id.home:
-                        gotoMainMenu();
-                        break;
-                }
-                return false;
+        nav.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.account:
+                    if(FirebaseAuth.getInstance().getCurrentUser() != null){
+                        goToAccount();
+                    }else{
+                        Toast.makeText(SettingsActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
+                    }
+                    break;
+                case R.id.settings:
+                    break;
+                case R.id.home:
+                    gotoMainMenu();
+                    break;
             }
+            return false;
         });
     }
 
@@ -81,11 +58,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void goToAccount(){
         Intent myIntent = new Intent(this, AccountActivity.class);
-        startActivity(myIntent);
-    }
-
-    public void gotoEntry(){
-        Intent myIntent = new Intent(this, EntryActivity.class);
         startActivity(myIntent);
     }
 
@@ -120,10 +92,10 @@ public class SettingsActivity extends AppCompatActivity {
         TextView cancel_text = dialog.findViewById(R.id.cancel_text);
 
         okay_text.setOnClickListener(v -> {
-            SharedPreferences.Editor score_editor = sp_score.edit();
-            score_editor.clear();
-            score_editor.commit();
-            Toast.makeText(SettingsActivity.this,"Scores has been reset", Toast.LENGTH_LONG).show();
+//            SharedPreferences.Editor score_editor = sp_score.edit();
+//            score_editor.clear();
+//            score_editor.apply();
+            Toast.makeText(SettingsActivity.this,"Does this work?", Toast.LENGTH_LONG).show();
             dialog.dismiss();
         });
 

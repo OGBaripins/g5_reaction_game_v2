@@ -2,13 +2,10 @@ package com.example.reaction_game.testScreens;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,15 +14,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.reaction_game.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,23 +32,17 @@ public class MemoryTest1Activity extends AppCompatActivity {
     int index, patternDelay = 300, sqCount = 4, move, timerIndex;
     int[] coordinates = new int[sqCount * 2 + 2];
     ArrayList<Integer> pattern = new ArrayList<>();
-    SharedPreferences sp, sp_user;
-    SharedPreferences.Editor editor;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Map<String, Object> return_data;
 
     @Override
-    public void onBackPressed() {
-        // Do nothing lol
-    }
+    public void onBackPressed() {}
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory_test1);
-        sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
-        sp_user = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
         sqIndicator = findViewById(R.id.memorySqIndicator);
         addCoordinates(-8000, -8000, 0); // offScreen
         addCoordinates(16, 42, 1); // sq1
@@ -158,68 +143,44 @@ public class MemoryTest1Activity extends AppCompatActivity {
             general_games_played(cur_user_email);
             db.collection(cur_user_email)
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            Map<String, Object> user = new HashMap<>();
-                            if (task.isSuccessful()) {
+                    .addOnCompleteListener(task -> {
+                        Map<String, Object> user = new HashMap<>();
+                        if (task.isSuccessful()) {
 
-                                if(task.getResult().size() == 0){
-                                    Log.d(TAG, "Damn thats crazy AAAAAAAAAAAAAAAAAA"+ task.getResult().size());
-                                    user.put("all_games_played", 1);
-                                    user.put("MCT_games_played", 1);
-                                    user.put("MCT_best_result", score);
-                                    user.put("MCT_result_sum", score);
-                                    user.put("MCT_result_average", score);
-                                }
-
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    if(!document.getId().equals("MCT")){continue;}
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                    return_data = document.getData();
-                                    Log.d(TAG, return_data + " return data");
-                                    user.put("MCT_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()) + 1);
-                                    if (score > Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()) ||
-                                            Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()) == 0) {
-                                        user.put("MCT_best_result", score);
-                                    }else{
-                                        user.put("MCT_best_result", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()));
-                                    }
-                                    user.put("MCT_result_sum", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_result_sum")).toString())+score);
-                                    user.put("MCT_result_average", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_result_sum")).toString())/ Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()));
-                                }
-                                // Add a new document with a generated ID
-                                db.collection(cur_user_email).document("MCT")
-                                        .set(user)
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Log.d(TAG, "DocumentSnapshot successfully written!");
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.w(TAG, "Error writing document", e);
-                                            }
-                                        });
-                                Log.d(TAG, "Damn thats crazy"+ task.getResult().size());
-                            } else {
-                                Log.d(TAG, "Error getting documents.", task.getException());
+                            if(task.getResult().size() == 0){
+                                Log.d(TAG, "Damn thats crazy AAAAAAAAAAAAAAAAAA"+ task.getResult().size());
+                                user.put("all_games_played", 1);
+                                user.put("MCT_games_played", 1);
+                                user.put("MCT_best_result", score);
+                                user.put("MCT_result_sum", score);
+                                user.put("MCT_result_average", score);
                             }
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                if(!document.getId().equals("MCT")){continue;}
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                return_data = document.getData();
+                                Log.d(TAG, return_data + " return data");
+                                user.put("MCT_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()) + 1);
+                                if (score > Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()) ||
+                                        Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()) == 0) {
+                                    user.put("MCT_best_result", score);
+                                }else{
+                                    user.put("MCT_best_result", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()));
+                                }
+                                user.put("MCT_result_sum", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_result_sum")).toString())+score);
+                                user.put("MCT_result_average", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_result_sum")).toString())/ Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()));
+                            }
+                            // Add a new document with a generated ID
+                            db.collection(cur_user_email).document("MCT")
+                                    .set(user)
+                                    .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully written!"))
+                                    .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
+                            Log.d(TAG, "Damn thats crazy"+ task.getResult().size());
+                        } else {
+                            Log.d(TAG, "Error getting documents.", task.getException());
                         }
                     });
-
-
-//            editor = sp.edit();
-//            editor.putInt("all_games_played", sp.getInt("all_games_played", 0) + 1); // Take if you need to count all games played!!
-//            editor.putInt("MCT_games_played", sp.getInt("MCT_games_played", 0) + 1);
-//            if (score > sp.getInt("MCT_best_result", 0) || sp.getInt("MCT_best_result", 0) == 0) {
-//                editor.putInt("MCT_best_result", score);
-//            }
-//            editor.putInt("MCT_result_sum", sp.getInt("MCT_result_sum", 0) + score);
-//            editor.putInt("MCT_result_average", (sp.getInt("MCT_result_sum", 0) / sp.getInt("MCT_games_played", 1)));
-//            editor.commit();
         }
         Intent myIntent = new Intent(this, MemoryScoreActivity.class);
         startActivity(myIntent);
@@ -228,36 +189,23 @@ public class MemoryTest1Activity extends AppCompatActivity {
     public void general_games_played(String cur_user_email){
         db.collection(cur_user_email)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        Map<String, Object> user = new HashMap<>();
-                        if (task.isSuccessful()) {
-                            if(task.getResult().size() == 0){
-                                user.put("all_games_played", 1);
-                            }
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(!document.getId().equals("GENERAL")){continue;}
-                                return_data = document.getData();
-                                user.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("all_games_played")).toString()) + 1);
-                                }
-                            db.collection(cur_user_email).document("GENERAL")
-                                    .set(user)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            Log.d(TAG, "DocumentSnapshot successfully written!");
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.w(TAG, "Error writing document", e);
-                                        }
-                                    });
-                        } else {
-                            Log.d(TAG, "Error getting documents.", task.getException());
+                .addOnCompleteListener(task -> {
+                    Map<String, Object> user = new HashMap<>();
+                    if (task.isSuccessful()) {
+                        if(task.getResult().size() == 0){
+                            user.put("all_games_played", 1);
                         }
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            if(!document.getId().equals("GENERAL")){continue;}
+                            return_data = document.getData();
+                            user.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("all_games_played")).toString()) + 1);
+                            }
+                        db.collection(cur_user_email).document("GENERAL")
+                                .set(user)
+                                .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully written!"))
+                                .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
+                    } else {
+                        Log.d(TAG, "Error getting documents.", task.getException());
                     }
                 });
     }
