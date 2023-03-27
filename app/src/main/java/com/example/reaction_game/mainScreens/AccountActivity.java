@@ -53,9 +53,11 @@ public class AccountActivity extends AppCompatActivity {
 
         sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
 
-        game_played_value.setText(Integer.toString(sp.getInt("all_games_played", 0)));
-        ch_best_result_value.setText(df.format(sp.getFloat("CH_best_result", 0)/1000));
-        mct_best_result_value.setText(Integer.toString(sp.getInt("MCT_best_result", 0))); // For memory test
+        if(sp.getBoolean("isLoggedIn", false)) {
+            game_played_value.setText(Integer.toString(sp.getInt("all_games_played", 0)));
+            ch_best_result_value.setText(df.format(sp.getFloat("CH_best_result", 0) / 1000));
+            mct_best_result_value.setText(Integer.toString(sp.getInt("MCT_best_result", 0))); // For memory test
+        }
 
     }
 
@@ -71,6 +73,11 @@ public class AccountActivity extends AppCompatActivity {
 
     public void goToSettings(){
         Intent myIntent = new Intent(this, SettingsActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void goToCamera(View v){
+        Intent myIntent = new Intent(this, CameraKActivity.class);
         startActivity(myIntent);
     }
 }

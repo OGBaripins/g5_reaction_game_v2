@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
                         }else{
                             Toast.makeText(MainActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
                         }
+
+                        // ====================== FIX CHECK FOR USER BEING LOGGED IN
+                        goToAccount();
                         break;
                     case R.id.settings:
                         goToSettings();
