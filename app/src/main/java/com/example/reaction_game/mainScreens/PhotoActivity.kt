@@ -20,6 +20,10 @@ import androidx.camera.video.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.reaction_game.databinding.ActivityPhotoBinding
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -30,7 +34,8 @@ class PhotoActivity : AppCompatActivity() {
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
     var uriArr = ArrayList<Uri>()
-    var avatarImagePath = ""
+    var db = FirebaseFirestore.getInstance()
+    private var returnData: Map<String, Any>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,13 +80,52 @@ class PhotoActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     if (msg != null) {
                         Log.d(TAG, msg)
-                        avatarImagePath = msg
+                        saveAvatar(msg)
                     }
                     val intent = Intent(this@PhotoActivity, AccountActivity::class.java)
                     startActivity(intent)
                 }
             }
         )
+    }
+
+    private fun saveAvatar(path: String){
+        // To not count scores if not logged in!!
+        // Create a new user with a first, middle, and last name
+        val curUserEmail = FirebaseAuth.getInstance().currentUser!!.email!!
+        //general_games_played(cur_user_email)
+        db.collection(curUserEmail)
+            .get()
+            .addOnCompleteListener { task: Task<QuerySnapshot> ->
+                val user: MutableMap<String, Any> =
+                    HashMap()
+                if (task.isSuccessful) {
+                    for (document in task.result) {
+                        if (document.id != "AVATAR") {
+                            continue
+                        }
+                        returnData = document.data
+                        user["avatarFilePath"] = path
+                    }
+                    db.collection(curUserEmail).document("AVATAR")
+                        .set(user)
+                        .addOnSuccessListener {
+                            Log.d(
+                                ContentValues.TAG,
+                                "DocumentSnapshot successfully written!"
+                            )
+                        }
+                        .addOnFailureListener { e: java.lang.Exception? ->
+                            Log.w(
+                                ContentValues.TAG,
+                                "Error writing document",
+                                e
+                            )
+                        }
+                } else {
+                    Log.d(ContentValues.TAG, "Error getting documents.", task.exception)
+                }
+            }
     }
 
     private fun startCamera() {
@@ -117,7 +161,6 @@ class PhotoActivity : AppCompatActivity() {
     }
 
     companion object {
-        lateinit var avatarImagePath: String
         private const val TAG = "CameraXApp"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS =
