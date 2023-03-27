@@ -177,7 +177,6 @@ public class MemoryTest1Activity extends AppCompatActivity {
                                     return_data = document.getData();
                                     Log.d(TAG, return_data + " return data");
 
-                                    Log.d(TAG, "yes very " + Integer.parseInt(Objects.requireNonNull(return_data.get("all_games_played")).toString()));
                                     user.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("all_games_played")).toString()) + 1);
                                     user.put("MCT_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()) + 1);
                                     if (score > Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_best_result")).toString()) ||

@@ -98,4 +98,14 @@ public class MemoryScoreActivity extends AppCompatActivity {
         Intent myIntent = new Intent(this, MemoryTest1Activity.class);
         startActivity(myIntent);
     }
+
+    public void goToAudioRecord(View v){
+        Intent myIntent = new Intent(this, AudioActivity.class);
+        startActivity(myIntent);
+    }
+
+    public void goToVideoRecord(View v){
+        Intent myIntent = new Intent(this, VideoActivity.class);
+        startActivity(myIntent);
+    }
 }

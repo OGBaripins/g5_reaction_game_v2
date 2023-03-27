@@ -137,7 +137,7 @@ class AudioActivity : AppCompatActivity() {
         editor.putInt("fileID", sp.getInt("fileID", 0) + 1)
         val contextWrapper = ContextWrapper(applicationContext)
         val musicDirectory: File = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!
-        val file = File(musicDirectory, "audioFile#" + sp.getInt("fileID", 0) + "_.mp3" )
+        val file = File(musicDirectory, "ReactON test result audio#" + sp.getInt("fileID", 0) + "_.mp3" )
         editor.apply()
         return file.path
     }

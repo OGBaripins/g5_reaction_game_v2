@@ -40,7 +40,6 @@ public class AccountActivity extends AppCompatActivity {
         avatarPicture = findViewById(R.id.imageAvatar);
         game_played_value = findViewById(R.id.game_played_value); mct_best_result_value = findViewById(R.id.mct_best_result_value); ch_best_result_value = findViewById(R.id.ch_best_result_value);
 
-        //File imgFile = new  File("/Internal storage/Pictures/CameraX-Image/reactOnAvatarPicture.jpg");avatarImagePath
         File imgFile = new  File(PhotoActivity.avatarImagePath + "");
         if(imgFile.exists()){
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());

@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.reaction_game.R;
-import com.example.reaction_game.testScreens.AudioActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,9 +23,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sp;
 
     @Override
-    public void onBackPressed() {
-        // Do nothing lol
-    }
+    public void onBackPressed() {}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
                         }else{
                             Toast.makeText(MainActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
                         }
-
-                        // ====================== FIX CHECK FOR USER BEING LOGGED IN
-                        goToAccount();
                         break;
                     case R.id.settings:
                         goToSettings();
