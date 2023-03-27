@@ -3,6 +3,7 @@ package com.example.reaction_game.mainScreens
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -19,9 +20,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.video.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.PermissionChecker
 import com.example.reaction_game.databinding.ActivityPhotoBinding
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -33,6 +32,7 @@ class PhotoActivity : AppCompatActivity() {
     private var recording: Recording? = null
     private lateinit var cameraExecutor: ExecutorService
     var uriArr = ArrayList<Uri>()
+    var avatarImagePath = "";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,14 +51,11 @@ class PhotoActivity : AppCompatActivity() {
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
-        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
-            .format(System.currentTimeMillis())
+        val name = "reactOnAvatarPicture"
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
-            }
+            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
         }
         val outputOptions = ImageCapture.OutputFileOptions
             .Builder(contentResolver,
@@ -80,7 +77,10 @@ class PhotoActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     if (msg != null) {
                         Log.d(TAG, msg)
+                        avatarImagePath = msg
                     }
+                    val intent = Intent(this@PhotoActivity, AccountActivity::class.java)
+                    startActivity(intent)
                 }
             }
         )
@@ -126,6 +126,7 @@ class PhotoActivity : AppCompatActivity() {
     }
 
     companion object {
+        lateinit var avatarImagePath: String
         private const val TAG = "CameraXApp"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
