@@ -172,6 +172,7 @@ public class MemoryTest1Activity extends AppCompatActivity {
                                 }
 
                                 for (QueryDocumentSnapshot document : task.getResult()) {
+                                    if(!document.getId().equals("MCT")){continue;}
                                     Log.d(TAG, document.getId() + " => " + document.getData());
                                     return_data = document.getData();
                                     Log.d(TAG, return_data + " return data");
@@ -189,7 +190,7 @@ public class MemoryTest1Activity extends AppCompatActivity {
                                     user.put("MCT_result_average", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_result_sum")).toString())/ Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()));
                                 }
                                 // Add a new document with a generated ID
-                                db.collection(cur_user_email).document("main")
+                                db.collection(cur_user_email).document("MCT")
                                         .set(user)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
