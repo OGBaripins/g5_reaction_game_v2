@@ -19,6 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 public class ReactTest1Activity extends AppCompatActivity {
 
@@ -49,7 +50,7 @@ public class ReactTest1Activity extends AppCompatActivity {
     public void startRTest1(View v){
         findViewById(R.id.descReactT1).animate().xBy(-3000).setDuration(200);
         pinkBackground.setClickable(true);
-        blueBackground.animate().xBy(10).setDuration(3000).withEndAction(()
+        blueBackground.animate().xBy(10).setDuration(new Random().nextInt((2000)) + 1000).withEndAction(()
                 -> blueBackground.animate().xBy(2200).setDuration(0).withEndAction(()
                 -> startTime = System.currentTimeMillis()));
     }

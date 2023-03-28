@@ -8,6 +8,7 @@ import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.Environment
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -35,7 +36,7 @@ class AudioActivity : AppCompatActivity() {
         }
     }
 
-    fun startRecording() {
+    fun startRecording(v: View) {
         mediaRecorder = MediaRecorder()
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC)
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
@@ -46,14 +47,14 @@ class AudioActivity : AppCompatActivity() {
         Toast.makeText(this, "Audio recording has started!", Toast.LENGTH_SHORT).show()
     }
 
-    fun stopRecording() {
+    fun stopRecording(v: View) {
         mediaRecorder.stop()
         mediaRecorder.release()
         Toast.makeText(this, "Audio recording has stopped!", Toast.LENGTH_SHORT).show()
     }
 
     @SuppressLint("SetTextI18n")
-    fun selectPreviousRecording() {
+    fun selectPreviousRecording(v: View) {
         val contextWrapper = ContextWrapper(applicationContext)
         if (contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.list()?.isNotEmpty() == true){
             val audioList = File(contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!.path).listFiles()!!
@@ -69,7 +70,7 @@ class AudioActivity : AppCompatActivity() {
         }
     }
 
-    fun selectNextRecording() {
+    fun selectNextRecording(v: View) {
         val contextWrapper = ContextWrapper(applicationContext)
         if (contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.list()?.isNotEmpty() == true){
             val audioList = File(contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!.path).listFiles()!!
@@ -93,7 +94,7 @@ class AudioActivity : AppCompatActivity() {
         findViewById<Button>(R.id.audio_play).text = "Play Recording$text"
     }
 
-    fun playRecording() {
+    fun playRecording(v: View) {
         val contextWrapper = ContextWrapper(applicationContext)
         if (contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)?.list()?.isNotEmpty() == true){
             mediaPlayer = MediaPlayer()
@@ -108,7 +109,7 @@ class AudioActivity : AppCompatActivity() {
 
     }
 
-    fun displayRecordedAudio() {
+    fun displayRecordedAudio(v: View) {
         val contextWrapper = ContextWrapper(applicationContext)
         val files = File(contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC)!!.path).list()
         val a = files?.let { ArrayAdapter(this, android.R.layout.simple_list_item_1, it) }
