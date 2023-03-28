@@ -32,12 +32,12 @@ import java.util.Objects;
 public class AccountActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
-    SharedPreferences sp;
     DecimalFormat df = new DecimalFormat("0.0000");
     TextView game_played_value, mct_best_result_value, ch_best_result_value;
     ImageView avatarPicture;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Map<String, Object> return_data;
+    Map<String, Object> return_data1;
 
     @Override
     public void onBackPressed() {}
@@ -67,15 +67,6 @@ public class AccountActivity extends AppCompatActivity {
             }
             return false;
         });
-
-        sp = getSharedPreferences("UserScores", Context.MODE_PRIVATE);
-
-        if(sp.getBoolean("isLoggedIn", false)) {
-            game_played_value.setText(Integer.toString(sp.getInt("all_games_played", 0)));
-            ch_best_result_value.setText(df.format(sp.getFloat("CH_best_result", 0) / 1000));
-            mct_best_result_value.setText(Integer.toString(sp.getInt("MCT_best_result", 0))); // For memory test
-        }
-
     }
 
     public void setupUserDisplay(){
@@ -97,22 +88,21 @@ public class AccountActivity extends AppCompatActivity {
                                 return_data = document.getData();
                                 mct_best_result_value.setText(Objects.requireNonNull(return_data.get("MCT_best_result")).toString());}
                             if(!document.getId().equals("AVATAR")){continue;}
-                            return_data = document.getData();
-                            user.put("avatarFilePath", Objects.requireNonNull(return_data.get("avatarFilePath")).toString());
+                            return_data1 = document.getData();
+                            user.put("avatarFilePath", Objects.requireNonNull(return_data1.get("avatarFilePath")).toString());
                             //=======================================================================================================
-                            File imgFile = new  File(Objects.requireNonNull(return_data.get("avatarFilePath")) +".jpg");
+                            File imgFile = new  File(Objects.requireNonNull(return_data1.get("avatarFilePath")) +".jpg");
                             //File imgFile = new  File("Pictures/CameraX-Image/reactOnAvatarPicture.jpg");
                             if(imgFile.exists()){
                                 Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
                                 avatarPicture.setImageBitmap(myBitmap);
                             } else {
-                                Toast.makeText(this,"File not found" + (return_data.get("avatarFilePath")), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this,"File not found" + (return_data1.get("avatarFilePath")), Toast.LENGTH_SHORT).show();
                             }
                             //=======================================================================================================
-
-
                         }
-                        if(return_data == null){
+
+                        if(return_data1 == null){
                             user.put("avatarFilePath", "");
                         }
                         db.collection(cur_user_email).document("AVATAR")
