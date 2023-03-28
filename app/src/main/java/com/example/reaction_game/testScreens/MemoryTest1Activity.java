@@ -34,6 +34,7 @@ public class MemoryTest1Activity extends AppCompatActivity {
     ArrayList<Integer> pattern = new ArrayList<>();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     Map<String, Object> return_data;
+    Map<String, Object> return_data1;
 
     @Override
     public void onBackPressed() {}
@@ -147,14 +148,7 @@ public class MemoryTest1Activity extends AppCompatActivity {
                         Map<String, Object> user = new HashMap<>();
                         if (task.isSuccessful()) {
 
-                            if(task.getResult().size() == 0){
-                                Log.d(TAG, "Damn thats crazy AAAAAAAAAAAAAAAAAA"+ task.getResult().size());
-                                user.put("all_games_played", 1);
-                                user.put("MCT_games_played", 1);
-                                user.put("MCT_best_result", score);
-                                user.put("MCT_result_sum", score);
-                                user.put("MCT_result_average", score);
-                            }
+
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 if(!document.getId().equals("MCT")){continue;}
@@ -170,6 +164,13 @@ public class MemoryTest1Activity extends AppCompatActivity {
                                 }
                                 user.put("MCT_result_sum", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_result_sum")).toString())+score);
                                 user.put("MCT_result_average", Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_result_sum")).toString())/ Integer.parseInt(Objects.requireNonNull(return_data.get("MCT_games_played")).toString()));
+                            }
+                            if(return_data == null){
+                                Log.d(TAG, "Damn thats crazy AAAAAAAAAAAAAAAAAA"+ task.getResult().size());
+                                user.put("MCT_games_played", 1);
+                                user.put("MCT_best_result", score);
+                                user.put("MCT_result_sum", score);
+                                user.put("MCT_result_average", score);
                             }
                             // Add a new document with a generated ID
                             db.collection(cur_user_email).document("MCT")
@@ -190,18 +191,18 @@ public class MemoryTest1Activity extends AppCompatActivity {
         db.collection(cur_user_email)
                 .get()
                 .addOnCompleteListener(task -> {
-                    Map<String, Object> user = new HashMap<>();
+                    Map<String, Object> userr = new HashMap<>();
                     if (task.isSuccessful()) {
-                        if(task.getResult().size() == 0){
-                            user.put("all_games_played", 1);
-                        }
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             if(!document.getId().equals("GENERAL")){continue;}
-                            return_data = document.getData();
-                            user.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data.get("all_games_played")).toString()) + 1);
-                            }
+                            return_data1 = document.getData();
+                            userr.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data1.get("all_games_played")).toString()) + 1);
+                        }
+                        if(return_data1 == null){
+                            userr.put("all_games_played", 1);
+                        }
                         db.collection(cur_user_email).document("GENERAL")
-                                .set(user)
+                                .set(userr)
                                 .addOnSuccessListener(aVoid -> Log.d(TAG, "DocumentSnapshot successfully written!"))
                                 .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
                     } else {

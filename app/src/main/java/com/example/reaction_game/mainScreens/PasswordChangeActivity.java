@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
-public class UsernameChange extends AppCompatActivity {
+public class PasswordChangeActivity extends AppCompatActivity {
 
     BottomNavigationView nav;
     SharedPreferences sp;
@@ -38,7 +37,7 @@ public class UsernameChange extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_username_change);
+        setContentView(R.layout.activity_password_change);
 
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.settings);
@@ -92,10 +91,10 @@ public class UsernameChange extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             Log.d(TAG, "Password updated");
-                                            Toast.makeText(UsernameChange.this, "Password updated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(PasswordChangeActivity.this, "Password updated", Toast.LENGTH_SHORT).show();
                                             goToSettings();
                                         } else {
-                                            Toast.makeText(UsernameChange.this, "Error password not updated", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(PasswordChangeActivity.this, "Error password not updated", Toast.LENGTH_SHORT).show();
                                             Log.d(TAG, "Error password not updated");
                                         }
                                     }
@@ -106,7 +105,7 @@ public class UsernameChange extends AppCompatActivity {
                         }
                     });
         }else{
-            Toast.makeText(UsernameChange.this, "Password has to be more than 8 characters long", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PasswordChangeActivity.this, "Password has to be more than 8 characters long", Toast.LENGTH_SHORT).show();
         }
     }
 }

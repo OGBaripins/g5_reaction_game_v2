@@ -7,12 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +22,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -87,7 +81,7 @@ public class SettingsActivity extends AppCompatActivity {
             Toast.makeText(SettingsActivity.this,"Please log in to access this.", Toast.LENGTH_LONG).show();
             return;
         }
-        Intent myIntent = new Intent(this, UsernameChange.class);
+        Intent myIntent = new Intent(this, PasswordChangeActivity.class);
         startActivity(myIntent);
     }
 

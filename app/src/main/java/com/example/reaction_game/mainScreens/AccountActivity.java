@@ -51,7 +51,7 @@ public class AccountActivity extends AppCompatActivity {
         avatarPicture = findViewById(R.id.imageAvatar);
         game_played_value = findViewById(R.id.game_played_value); mct_best_result_value = findViewById(R.id.mct_best_result_value); ch_best_result_value = findViewById(R.id.ch_best_result_value);
 
-        setupAvatar();
+        setupUserDisplay();
 
         nav = findViewById(R.id.bottom_navigation);
         nav.setSelectedItemId(R.id.account);
@@ -75,9 +75,10 @@ public class AccountActivity extends AppCompatActivity {
             ch_best_result_value.setText(df.format(sp.getFloat("CH_best_result", 0) / 1000));
             mct_best_result_value.setText(Integer.toString(sp.getInt("MCT_best_result", 0))); // For memory test
         }
+
     }
 
-    public void setupAvatar(){
+    public void setupUserDisplay(){
         String cur_user_email = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getEmail();
         assert cur_user_email != null;
         db.collection(cur_user_email)
@@ -85,10 +86,16 @@ public class AccountActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     Map<String, Object> user = new HashMap<>();
                     if (task.isSuccessful()) {
-                        if(task.getResult().size() == 0){
-                            user.put("avatarFilePath", "");
-                        }
                         for (QueryDocumentSnapshot document : task.getResult()) {
+                            if(document.getId().equals("GENERAL")){
+                                return_data = document.getData();
+                                game_played_value.setText(Objects.requireNonNull(return_data.get("all_games_played")).toString());}
+                            if(document.getId().equals("CH")){
+                                return_data = document.getData();
+                                ch_best_result_value.setText(Objects.requireNonNull(return_data.get("CH_best_result")).toString());}
+                            if(document.getId().equals("MCT")){
+                                return_data = document.getData();
+                                mct_best_result_value.setText(Objects.requireNonNull(return_data.get("MCT_best_result")).toString());}
                             if(!document.getId().equals("AVATAR")){continue;}
                             return_data = document.getData();
                             user.put("avatarFilePath", Objects.requireNonNull(return_data.get("avatarFilePath")).toString());
@@ -102,6 +109,11 @@ public class AccountActivity extends AppCompatActivity {
                                 Toast.makeText(this,"File not found" + (return_data.get("avatarFilePath")), Toast.LENGTH_SHORT).show();
                             }
                             //=======================================================================================================
+
+
+                        }
+                        if(return_data == null){
+                            user.put("avatarFilePath", "");
                         }
                         db.collection(cur_user_email).document("AVATAR")
                                 .set(user)

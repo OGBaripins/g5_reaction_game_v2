@@ -116,13 +116,13 @@ public class ReactTest1Activity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     Map<String, Object> userr = new HashMap<>();
                     if (task.isSuccessful()) {
-                        if(task.getResult().size() == 0){
-                            userr.put("all_games_played", 1);
-                        }
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             if(!document.getId().equals("GENERAL")){continue;}
                             return_data1 = document.getData();
                             userr.put("all_games_played", Integer.parseInt(Objects.requireNonNull(return_data1.get("all_games_played")).toString()) + 1);
+                        }
+                        if(return_data1 == null){
+                            userr.put("all_games_played", 1);
                         }
                         db.collection(cur_user_email).document("GENERAL")
                                 .set(userr)
